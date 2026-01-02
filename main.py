@@ -6,7 +6,7 @@ from tkinter import *
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
 window.title("Password Manager")
-window.configure( padx=20, pady=20)
+window.configure(padx=50, pady=50)
 
 #Logo
 canvas = Canvas(master=window, width=200, height=200)
@@ -25,17 +25,20 @@ password_entry = Entry(master=window, width=21)
 
 #Buttons
 generate_button = Button(master=window, text="Generate Password")
-add_button = Button(master=window, text="Add")
+add_button = Button(master=window, text="Add", width=36)
 
 #Grid ---------------------------------------------------
 canvas.grid(row=0, column=1)
 #Labels
-website_label.grid(row=1, column=0)
-username_label.grid(row=2, column=0)
-password_label.grid(row=3, column=0)
+website_label.grid(row=1, column=0, sticky="E")
+username_label.grid(row=2, column=0, sticky="E")
+password_label.grid(row=3, column=0, sticky="E")
 #Entries
-website_entry.grid(row=1, column=1, columnspan=2)
-username_entry.grid(row=2, column=1, columnspan=2)
-password_entry.grid(row=3, column=1)
+website_entry.grid(row=1, column=1, columnspan=2, sticky="WE")
+username_entry.grid(row=2, column=1, columnspan=2, sticky="WE")
+password_entry.grid(row=3, column=1, sticky="W")
+#Buttons
+generate_button.grid(row=3, column=2, sticky="W")
+add_button.grid(row=4, column=1, columnspan=2, sticky="WE")
 
 window.mainloop()
