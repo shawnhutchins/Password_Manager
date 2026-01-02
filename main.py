@@ -29,5 +29,9 @@ canvas.grid(row=0, column=1)
 website_label.grid(row=1, column=0)
 username_label.grid(row=2, column=0)
 password_label.grid(row=3, column=0)
+#Entries
+website_entry.grid(row=1, column=1, columnspan=2)
+username_entry.grid(row=2, column=1, columnspan=2)
+password_entry.grid(row=3, column=1)
 
 window.mainloop()
