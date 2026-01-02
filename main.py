@@ -18,12 +18,17 @@ website_label = Label(master=window, text="Website:")
 username_label = Label(master=window, text="Email/Username:")
 password_label = Label(master=window, text="Password:")
 
+#Entry Variables
+website_data = StringVar()
+username_data = StringVar()
+password_data = StringVar()
+
 #Entries
-website_entry = Entry(master=window, width=35)
+website_entry = Entry(master=window, width=35, textvariable=website_data)
 website_entry.focus()
-username_entry = Entry(master=window, width=35)
-username_entry.insert(0, "example@gmail.com")
-password_entry = Entry(master=window, width=33)
+username_entry = Entry(master=window, width=35, textvariable=username_data)
+username_data.set("example@gmail.com")
+password_entry = Entry(master=window, width=33, textvariable=password_data)
 
 #Buttons
 generate_button = Button(master=window, text="Generate Password")
