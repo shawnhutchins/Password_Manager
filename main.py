@@ -1,8 +1,13 @@
 from tkinter import *
+
+DEFAULT_USERNAME = "example@gmail.com"
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
-
+def clear_entries():
+    website_data.set("")
+    #username_data.set("")
+    password_data.set("")
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
 window.title("Password Manager")
@@ -27,7 +32,7 @@ password_data = StringVar()
 website_entry = Entry(master=window, width=35, textvariable=website_data)
 website_entry.focus()
 username_entry = Entry(master=window, width=35, textvariable=username_data)
-username_data.set("example@gmail.com")
+username_data.set(DEFAULT_USERNAME)
 password_entry = Entry(master=window, width=33, textvariable=password_data)
 
 #Buttons
