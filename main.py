@@ -18,6 +18,11 @@ website_label = Label(master=window, text="Website:")
 username_label = Label(master=window, text="Email/Username:")
 password_label = Label(master=window, text="Password:")
 
+#Entries
+website_entry = Entry(master=window, width=35)
+username_entry = Entry(master=window, width=35)
+password_entry = Entry(master=window, width=21)
+
 #Grid ---------------------------------------------------
 canvas.grid(row=0, column=1)
 #Labels
