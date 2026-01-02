@@ -20,5 +20,9 @@ password_label = Label(master=window, text="Password:")
 
 #Grid ---------------------------------------------------
 canvas.grid(row=0, column=1)
+#Labels
+website_label.grid(row=1, column=0)
+username_label.grid(row=2, column=0)
+password_label.grid(row=3, column=0)
 
 window.mainloop()
