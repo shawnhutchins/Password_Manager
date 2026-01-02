@@ -21,7 +21,7 @@ password_label = Label(master=window, text="Password:")
 #Entries
 website_entry = Entry(master=window, width=35)
 username_entry = Entry(master=window, width=35)
-password_entry = Entry(master=window, width=21)
+password_entry = Entry(master=window, width=33)
 
 #Buttons
 generate_button = Button(master=window, text="Generate Password")
