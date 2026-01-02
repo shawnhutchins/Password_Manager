@@ -20,7 +20,9 @@ password_label = Label(master=window, text="Password:")
 
 #Entries
 website_entry = Entry(master=window, width=35)
+website_entry.focus()
 username_entry = Entry(master=window, width=35)
+username_entry.insert(0, "example@gmail.com")
 password_entry = Entry(master=window, width=33)
 
 #Buttons
