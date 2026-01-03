@@ -1,5 +1,4 @@
 from tkinter import *
-import csv
 
 DEFAULT_USERNAME = "example@gmail.com"
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
@@ -11,10 +10,8 @@ def clear_entries():
     password_entry.delete(0, END)
 
 def save_entry():
-    data = [website_entry.get(), username_entry.get(), password_entry.get()]
     with open("data.txt", "a", newline="") as file:
-        writer = csv.writer(file)
-        writer.writerow(data)
+        file.write(f"{website_entry.get()},{username_entry.get()},{password_entry.get()}")
     clear_entries()
 
 # ---------------------------- UI SETUP ------------------------------- #
