@@ -6,16 +6,17 @@ DEFAULT_USERNAME = "example@gmail.com"
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def clear_entries():
-    website_data.set("")
-    #username_data.set("")
-    password_data.set("")
+    website_entry.delete(0, END)
+    #username_entry.delete(0, END)
+    password_entry.delete(0, END)
 
 def save_entry():
-    data = [website_data.get(), username_data.get(), password_data.get()]
+    data = [website_entry.get(), username_entry.get(), password_entry.get()]
     with open("data.txt", "a", newline="") as file:
         writer = csv.writer(file)
         writer.writerow(data)
     clear_entries()
+
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
 window.title("Password Manager")
@@ -31,17 +32,12 @@ website_label = Label(master=window, text="Website:")
 username_label = Label(master=window, text="Email/Username:")
 password_label = Label(master=window, text="Password:")
 
-#Entry Variables
-website_data = StringVar()
-username_data = StringVar()
-password_data = StringVar()
-
 #Entries
-website_entry = Entry(master=window, width=35, textvariable=website_data)
+website_entry = Entry(master=window, width=35)
 website_entry.focus()
-username_entry = Entry(master=window, width=35, textvariable=username_data)
-username_data.set(DEFAULT_USERNAME)
-password_entry = Entry(master=window, width=33, textvariable=password_data)
+username_entry = Entry(master=window, width=35)
+username_entry.insert(0, DEFAULT_USERNAME)
+password_entry = Entry(master=window, width=33)
 
 #Buttons
 generate_button = Button(master=window, text="Generate Password")
