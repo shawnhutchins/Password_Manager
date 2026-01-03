@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 from random import choice, randint, shuffle
+import pyperclip
 
 DEFAULT_USERNAME = "example@gmail.com"
 
@@ -19,6 +20,7 @@ def generate_password():
 
     finished_password = "".join(password_list)
     password_entry.insert(0, finished_password)
+    pyperclip.copy(finished_password)
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def clear_entries():
