@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 
 DEFAULT_USERNAME = "example@gmail.com"
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
@@ -10,8 +11,15 @@ def clear_entries():
     password_entry.delete(0, END)
 
 def save_entry():
-    with open("data.txt", "a", newline="") as file:
-        file.write(f"{website_entry.get()},{username_entry.get()},{password_entry.get()}")
+    website = website_entry.get()
+    username = username_entry.get()
+    password = password_entry.get()
+
+    messagebox.askokcancel(title=website, message=f"Username: {username}\nPassword: {password}\n\n"
+                                                  f"Would you like to save?")
+
+    with open("data.txt", "a") as file:
+        file.write(f"{website},{username},{password}\n")
     clear_entries()
 
 # ---------------------------- UI SETUP ------------------------------- #
