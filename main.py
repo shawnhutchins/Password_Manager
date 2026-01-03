@@ -1,4 +1,5 @@
 from tkinter import *
+import csv
 
 DEFAULT_USERNAME = "example@gmail.com"
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
@@ -8,6 +9,13 @@ def clear_entries():
     website_data.set("")
     #username_data.set("")
     password_data.set("")
+
+def save_entry():
+    data = [website_data.get(), username_data.get(), password_data.get()]
+    with open("data.txt", "a", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow(data)
+    clear_entries()
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
 window.title("Password Manager")
@@ -37,7 +45,7 @@ password_entry = Entry(master=window, width=33, textvariable=password_data)
 
 #Buttons
 generate_button = Button(master=window, text="Generate Password")
-add_button = Button(master=window, text="Add", width=36)
+add_button = Button(master=window, text="Add", width=36, command=save_entry)
 
 #Grid ---------------------------------------------------
 canvas.grid(row=0, column=1)
