@@ -5,20 +5,20 @@ from random import choice, randint, shuffle
 DEFAULT_USERNAME = "example@gmail.com"
 
 # ---------------------------- PASSWORD GENERATOR -------------------------------
-letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
+def generate_password():
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
-password_letters = [choice(letters) for _ in range(randint(8, 10))]
-password_numbers = [choice(numbers) for _ in range(randint(2, 4))]
-password_symbols = [choice(symbols) for _ in range(randint(2, 4))]
+    password_letters = [choice(letters) for _ in range(randint(8, 10))]
+    password_numbers = [choice(numbers) for _ in range(randint(2, 4))]
+    password_symbols = [choice(symbols) for _ in range(randint(2, 4))]
 
-password_list = password_letters + password_numbers + password_symbols
-shuffle(password_list)
+    password_list = password_letters + password_numbers + password_symbols
+    shuffle(password_list)
 
-password = "".join(password_list)
-
-print(f"Your password is: {password}")
+    finished_password = "".join(password_list)
+    password_entry.insert(0, finished_password)
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def clear_entries():
@@ -69,7 +69,7 @@ username_entry.insert(0, DEFAULT_USERNAME)
 password_entry = Entry(master=window, width=33)
 
 #Buttons
-generate_button = Button(master=window, text="Generate Password")
+generate_button = Button(master=window, text="Generate Password", command=generate_password)
 add_button = Button(master=window, text="Add", width=36, command=save_entry)
 
 #Grid ---------------------------------------------------
