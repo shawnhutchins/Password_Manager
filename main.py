@@ -15,12 +15,12 @@ def save_entry():
     username = username_entry.get()
     password = password_entry.get()
 
-    messagebox.askokcancel(title=website, message=f"Username: {username}\nPassword: {password}\n\n"
-                                                  f"Would you like to save?")
-
-    with open("data.txt", "a") as file:
-        file.write(f"{website},{username},{password}\n")
-    clear_entries()
+    confirmed = messagebox.askokcancel(title=website, message=f"Username: {username}\nPassword: {password}\n\n"
+                                                                f"Would you like to save?")
+    if confirmed:
+        with open("data.txt", "a") as file:
+            file.write(f"{website},{username},{password}\n")
+        clear_entries()
 
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
