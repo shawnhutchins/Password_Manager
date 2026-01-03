@@ -10,17 +10,25 @@ def clear_entries():
     #username_entry.delete(0, END)
     password_entry.delete(0, END)
 
+def validate_input():
+    if len(website_entry.get()) > 0 and len(username_entry.get()) > 0 and len(password_entry.get()) > 0:
+        return True
+    else:
+        messagebox.showwarning(title="Missing Input", message="Please make sure that all fields are filled out.")
+        return False
+
 def save_entry():
     website = website_entry.get()
     username = username_entry.get()
     password = password_entry.get()
 
-    confirmed = messagebox.askokcancel(title=website, message=f"Username: {username}\nPassword: {password}\n\n"
-                                                                f"Would you like to save?")
-    if confirmed:
-        with open("data.txt", "a") as file:
-            file.write(f"{website},{username},{password}\n")
-        clear_entries()
+    if validate_input():
+        confirmed = messagebox.askokcancel(title=website, message=f"Username: {username}\nPassword: {password}\n\n"
+                                                                    f"Would you like to save?")
+        if confirmed:
+            with open("data.txt", "a") as file:
+                file.write(f"{website},{username},{password}\n")
+            clear_entries()
 
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
