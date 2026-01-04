@@ -25,7 +25,7 @@ def generate_password():
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def clear_entries():
     website_entry.delete(0, END)
-    #username_entry.delete(0, END)
+    username_entry.delete(0, END)
     password_entry.delete(0, END)
 
 def validate_input():
