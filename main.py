@@ -5,7 +5,7 @@ import pyperclip
 
 DEFAULT_USERNAME = "example@gmail.com"
 
-# ---------------------------- PASSWORD GENERATOR -------------------------------
+#Generates a strong password, inserts the password into the password_entry, and copies it to the clipboard
 def generate_password():
     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
     numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
@@ -22,12 +22,13 @@ def generate_password():
     password_entry.insert(0, finished_password)
     pyperclip.copy(finished_password)
 
-# ---------------------------- SAVE PASSWORD ------------------------------- #
+#Clears input from all 3 entries
 def clear_entries():
     website_entry.delete(0, END)
     username_entry.delete(0, END)
     password_entry.delete(0, END)
 
+#Validates that none of the entries are empty
 def validate_input():
     if len(website_entry.get()) > 0 and len(username_entry.get()) > 0 and len(password_entry.get()) > 0:
         return True
@@ -35,6 +36,7 @@ def validate_input():
         messagebox.showwarning(title="Missing Input", message="Please make sure that all fields are filled out.")
         return False
 
+#Saves the credentials entered to the data.txt file
 def save_entry():
     website = website_entry.get()
     username = username_entry.get()
@@ -48,7 +50,7 @@ def save_entry():
                 file.write(f"{website},{username},{password}\n")
             clear_entries()
 
-# ---------------------------- UI SETUP ------------------------------- #
+# ---------------------------- UI Setup ------------------------------- #
 window = Tk()
 window.title("Password Manager")
 window.configure(padx=50, pady=50)
@@ -74,16 +76,19 @@ password_entry = Entry(master=window, width=33)
 generate_button = Button(master=window, text="Generate Password", command=generate_password)
 add_button = Button(master=window, text="Add", width=36, command=save_entry)
 
-#Grid ---------------------------------------------------
+# ---------------------------------- Grid ------------------------------- #
 canvas.grid(row=0, column=1)
+
 #Labels
 website_label.grid(row=1, column=0, sticky="E")
 username_label.grid(row=2, column=0, sticky="E")
 password_label.grid(row=3, column=0, sticky="E")
+
 #Entries
 website_entry.grid(row=1, column=1, columnspan=2, sticky="WE")
 username_entry.grid(row=2, column=1, columnspan=2, sticky="WE")
 password_entry.grid(row=3, column=1, sticky="W")
+
 #Buttons
 generate_button.grid(row=3, column=2, sticky="W")
 add_button.grid(row=4, column=1, columnspan=2, sticky="WE")
