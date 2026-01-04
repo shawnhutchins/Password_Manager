@@ -3,8 +3,6 @@ from tkinter import messagebox
 from random import choice, randint, shuffle
 import pyperclip
 
-DEFAULT_USERNAME = "example@gmail.com"
-
 #Generates a strong password, inserts the password into the password_entry, and copies it to the clipboard
 def generate_password():
     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
@@ -69,7 +67,6 @@ password_label = Label(master=window, text="Password:")
 website_entry = Entry(master=window, width=35)
 website_entry.focus()
 username_entry = Entry(master=window, width=35)
-username_entry.insert(0, DEFAULT_USERNAME)
 password_entry = Entry(master=window, width=33)
 
 #Buttons
