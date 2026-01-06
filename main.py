@@ -3,6 +3,12 @@ from tkinter import messagebox
 from random import choice, randint, shuffle
 import pyperclip
 
+#------------------------------ TASKS -----------------------------#
+#Add saving the salt value to each entry/row
+#Add salting and encryption to the username and password with a master password
+#Add a view to select an entry/row by website name to decrypt
+#Add decrypting an entry/row using the master password
+
 #Generates a strong password, inserts the password into the password_entry, and copies it to the clipboard
 def generate_password():
     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
