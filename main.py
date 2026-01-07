@@ -3,6 +3,18 @@ from tkinter import messagebox
 from random import choice, randint, shuffle
 import pyperclip
 
+#Cryptography imports
+import base64
+import secrets
+from cryptography.fernet import Fernet
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+
+#Cryptography constants
+KDF_ALGORITHM = hashes.SHA256()
+KDF_LENGTH = 32
+KDF_ITERATIONS = 120000
+
 #------------------------------ TASKS -----------------------------#
 #Add saving the salt value to each entry/row
 #Add salting and encryption to the username and password with a master password
