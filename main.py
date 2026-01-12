@@ -21,6 +21,22 @@ KDF_ITERATIONS = 120000
 #Add a view to select an entry/row by website name to decrypt
 #Add decrypting an entry/row using the master password
 
+def encrypt(plaintext: str, password: str) -> (bytes, bytes):
+    #Derive a symmetric key using the password and a fresh random salt
+    salt = secrets.token_bytes(16)
+    kdf = PBKDF2HMAC(algorithm=KDF_ALGORITHM, length=KDF_LENGTH, salt=salt, iterations=KDF_ITERATIONS)
+    key = kdf.derive(password.encode("utf-8"))
+
+    #Encrypt the message
+    f = Fernet(base64.urlsafe_b64encode(key))
+    ciphertext = f.encrypt(plaintext.encode("utf-8"))
+
+    return ciphertext, salt
+
+#checking values
+cipher_text, u_salt = encrypt("plaintext", "password")
+print(f"cipher text: {cipher_text}\nunique salt: {u_salt}")
+
 #Generates a strong password, inserts the password into the password_entry, and copies it to the clipboard
 def generate_password():
     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
