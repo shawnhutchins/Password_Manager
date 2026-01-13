@@ -33,10 +33,6 @@ def encrypt(plaintext: str, password: str) -> (bytes, bytes):
 
     return ciphertext, salt
 
-#checking values
-cipher_text, u_salt = encrypt("plaintext", "password")
-print(f"cipher text: {cipher_text}\nunique salt: {u_salt}")
-
 def decrypt(ciphertext: bytes, password: str, salt: bytes) -> str:
     #Derive the symmetric key using the password and provided salt
     kdf = PBKDF2HMAC(algorithm=KDF_ALGORITHM, length=KDF_LENGTH, salt=salt, iterations=KDF_ITERATIONS)
@@ -47,10 +43,6 @@ def decrypt(ciphertext: bytes, password: str, salt: bytes) -> str:
     plaintext = f.decrypt(ciphertext)
 
     return plaintext.decode("utf-8")
-
-#checking values
-plain_text = decrypt(cipher_text, "password", u_salt)
-print(plain_text)
 
 #Generates a strong password, inserts the password into the password_entry, and copies it to the clipboard
 def generate_password():
@@ -94,6 +86,12 @@ def save_entry():
             with open("data.txt", "a") as file:
                 file.write(f"{website_entry.get()},{username_entry.get()},{password_entry.get()}\n")
             clear_entries()
+
+#checking values temp
+cipher_text, u_salt = encrypt("plaintext", "password")
+print(f"cipher text: {cipher_text}\nunique salt: {u_salt}")
+plain_text = decrypt(cipher_text, "password", u_salt)
+print(plain_text)
 
 # ---------------------------- UI Setup ------------------------------- #
 window = Tk()
