@@ -37,6 +37,21 @@ def encrypt(plaintext: str, password: str) -> (bytes, bytes):
 cipher_text, u_salt = encrypt("plaintext", "password")
 print(f"cipher text: {cipher_text}\nunique salt: {u_salt}")
 
+def decrypt(ciphertext: bytes, password: str, salt: bytes) -> str:
+    #Derive the symmetric key using the password and provided salt
+    kdf = PBKDF2HMAC(algorithm=KDF_ALGORITHM, length=KDF_LENGTH, salt=salt, iterations=KDF_ITERATIONS)
+    key = kdf.derive(password.encode("utf-8"))
+
+    #Decrypt the message
+    f = Fernet(base64.urlsafe_b64encode(key))
+    plaintext = f.decrypt(ciphertext)
+
+    return plaintext.decode("utf-8")
+
+#checking values
+plain_text = decrypt(cipher_text, "password", u_salt)
+print(plain_text)
+
 #Generates a strong password, inserts the password into the password_entry, and copies it to the clipboard
 def generate_password():
     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
