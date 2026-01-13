@@ -16,10 +16,13 @@ KDF_LENGTH = 32
 KDF_ITERATIONS = 120000
 
 #------------------------------ TASKS -----------------------------#
-#Add saving the salt value to each entry/row
-#Add salting and encryption to the username and password with a master password
-#Add a view to select an entry/row by website name to decrypt
+#Handel incorrect password when decrypting
+#Handel incorrect salt when decrypting
+#Encrypt username and password but leave the website name
+#Edit save_entry() to save encrypted values and salts
+#Add a view to select an entry/row from a dropdown by website name to decrypt
 #Add decrypting an entry/row using the master password
+#Add decrypted password to clipboard (Learn about risks and precautions)
 
 #Salts and Encrypts a string with a password. Returns ciphertext and salt
 def encrypt(plaintext: str, password: str) -> (bytes, bytes):
