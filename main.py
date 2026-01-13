@@ -86,9 +86,10 @@ def validate_input():
 #Saves the credentials entered to the data.txt file
 def save_entry():
     if validate_input():
-        confirmed = messagebox.askokcancel(title=website_entry.get(), message=f"Username: {username_entry.get()}\n"
-                                                                              f"Password: {password_entry.get()}\n\n"
-                                                                              f"Would you like to save?")
+        confirmed = messagebox.askokcancel(title=website_entry.get(),
+                                            message=f"Username: {username_entry.get()}\n"
+                                                    f"Password: {password_entry.get()}\n\n"
+                                                    f"Would you like to save?")
         if confirmed:
             with open("data.txt", "a") as file:
                 file.write(f"{website_entry.get()},{username_entry.get()},{password_entry.get()}\n")
