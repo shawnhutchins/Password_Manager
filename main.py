@@ -21,6 +21,7 @@ KDF_ITERATIONS = 120000
 #Add a view to select an entry/row by website name to decrypt
 #Add decrypting an entry/row using the master password
 
+#Salts and Encrypts a string with a password. Returns ciphertext and salt
 def encrypt(plaintext: str, password: str) -> (bytes, bytes):
     #Derive a symmetric key using the password and a fresh random salt
     salt = secrets.token_bytes(16)
@@ -33,6 +34,7 @@ def encrypt(plaintext: str, password: str) -> (bytes, bytes):
 
     return ciphertext, salt
 
+#Decrypts some ciphertext using the password and salt. Returns plaintext
 def decrypt(ciphertext: bytes, password: str, salt: bytes) -> str:
     #Derive the symmetric key using the password and provided salt
     kdf = PBKDF2HMAC(algorithm=KDF_ALGORITHM, length=KDF_LENGTH, salt=salt, iterations=KDF_ITERATIONS)
