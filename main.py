@@ -17,8 +17,6 @@ KDF_LENGTH = 32
 KDF_ITERATIONS = 120000
 
 #------------------------------ TASKS -----------------------------#
-#Handel incorrect password when decrypting
-#Handel incorrect salt when decrypting
 #Encrypt username and password but leave the website name
 #Edit save_entry() to save encrypted values and salts
 #Add a view to select an entry/row from a dropdown by website name to decrypt
