@@ -6,6 +6,7 @@ import pyperclip
 #Cryptography imports
 import base64
 import secrets
+import cryptography.exceptions
 from cryptography.fernet import Fernet
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
@@ -45,9 +46,13 @@ def decrypt(ciphertext: bytes, password: str, salt: bytes) -> str:
 
     #Decrypt the message
     f = Fernet(base64.urlsafe_b64encode(key))
-    plaintext = f.decrypt(ciphertext)
-
-    return plaintext.decode("utf-8")
+    try:
+        plaintext = f.decrypt(ciphertext)
+        return plaintext.decode("utf-8")
+    except cryptography.fernet.InvalidToken as _:
+        print(f"InvalidToken")
+    except Exception as e:
+        print(f"Unexpected error: {e}")
 
 #Generates a strong password, inserts the password into the password_entry, and copies it to the clipboard
 def generate_password():
@@ -95,8 +100,8 @@ def save_entry():
 #checking values temp
 cipher_text, u_salt = encrypt("plaintext", "password")
 print(f"cipher text: {cipher_text}\nunique salt: {u_salt}")
-plain_text = decrypt(cipher_text, "password", u_salt)
-print(plain_text)
+plain_text = decrypt(cipher_text, "passwor", u_salt)
+print(f"Output: {plain_text}")
 
 # ---------------------------- UI Setup ------------------------------- #
 window = Tk()
