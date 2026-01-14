@@ -99,8 +99,10 @@ def save_entry():
 
 #checking values temp
 cipher_text, u_salt = encrypt("plaintext", "password")
+cipher_text2, u_salt2 = encrypt("username+password", "password2")
 print(f"cipher text: {cipher_text}\nunique salt: {u_salt}")
-plain_text = decrypt(cipher_text, "passwor", u_salt)
+print(f"cipher text2: {cipher_text2}\nunique salt2: {u_salt2}")
+plain_text = decrypt(cipher_text, "password", u_salt2)
 print(f"Output: {plain_text}")
 
 # ---------------------------- UI Setup ------------------------------- #
