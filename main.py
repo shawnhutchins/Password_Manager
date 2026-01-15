@@ -16,6 +16,9 @@ KDF_ALGORITHM = hashes.SHA256()
 KDF_LENGTH = 32
 KDF_ITERATIONS = 120000
 
+#using pipe with space for testing
+DELIMITER = " | "
+
 #Temp value for testing
 master_password = "default"
 
@@ -98,10 +101,10 @@ def save_entry():
             password_ciphertext, password_salt = encrypt(password_entry.get(), master_password)
 
             with open("data.txt", "a") as file:
-                file.write(f"{website_entry.get()},"
-                           f"{username_ciphertext},"
-                           f"{username_salt},"
-                           f"{password_ciphertext},"
+                file.write(f"{website_entry.get()}{DELIMITER}"
+                           f"{username_ciphertext}{DELIMITER}"
+                           f"{username_salt}{DELIMITER}"
+                           f"{password_ciphertext}{DELIMITER}"
                            f"{password_salt}\n")
             clear_entries()
 
