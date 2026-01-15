@@ -23,8 +23,6 @@ DELIMITER = " | "
 master_password = "default"
 
 #------------------------------ TASKS -----------------------------#
-#Encrypt username and password but leave the website name
-#Edit save_entry() to save encrypted values and salts
 #Add a view to select an entry/row from a dropdown by website name to decrypt
 #Add decrypting an entry/row using the master password
 #Add decrypted password to clipboard (Learn about risks and precautions)
