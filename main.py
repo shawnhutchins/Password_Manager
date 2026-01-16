@@ -17,13 +17,13 @@ KDF_LENGTH = 32
 KDF_ITERATIONS = 120000
 
 #using pipe with space for testing
-DELIMITER = " | "
+DELIMITER = ","
 
 #Temp value for testing
 master_password = "default"
 
 #------------------------------ TASKS -----------------------------#
-#Load in the saved data from data.txt
+#Load in the saved data from data.csv
 #Add a view to select an entry/row from a dropdown by website name to decrypt
 #Add decrypting an entry/row using the master password
 #Add decrypted password to clipboard (Learn about risks and precautions)
@@ -88,7 +88,7 @@ def validate_input():
         messagebox.showwarning(title="Missing Input", message="Please make sure that all fields are filled out.")
         return False
 
-#Saves the credentials entered to the data.txt file
+#Saves the credentials entered to the data.csv file
 def save_entry():
     if validate_input():
         confirmed = messagebox.askokcancel(title=website_entry.get(),
@@ -99,7 +99,7 @@ def save_entry():
             username_ciphertext, username_salt = encrypt(username_entry.get(), master_password)
             password_ciphertext, password_salt = encrypt(password_entry.get(), master_password)
 
-            with open("data.txt", "a") as file:
+            with open("data.csv", mode="a") as file:
                 file.write(f"{website_entry.get()}{DELIMITER}"
                            f"{username_ciphertext}{DELIMITER}"
                            f"{username_salt}{DELIMITER}"
