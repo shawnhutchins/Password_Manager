@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 from random import choice, randint, shuffle
+import csv
 import pyperclip
 
 #Cryptography imports
@@ -54,6 +55,16 @@ def decrypt(ciphertext: bytes, password: str, salt: bytes) -> str:
         return plaintext.decode("utf-8")
     except cryptography.fernet.InvalidToken as _:
         print(f"InvalidToken")
+    except Exception as e:
+        print(f"Unexpected error: {e}")
+
+def load_entries():
+    try:
+        with open("data.csv", mode="r", newline="") as csv_file:
+            csv_reader = csv.reader(csv_file, delimiter=DELIMITER)
+            return list(csv_reader)
+    except FileNotFoundError:
+        print("data.csv not found.")
     except Exception as e:
         print(f"Unexpected error: {e}")
 
