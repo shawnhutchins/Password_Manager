@@ -24,7 +24,8 @@ DELIMITER = ","
 master_password = "default"
 
 #------------------------------ TASKS -----------------------------#
-#Add a view to select an entry/row from a dropdown by website name to decrypt
+#Add a tab to select an entry/row from a dropdown by website name to decrypt
+#When clicking on decrypt tab load the data.csv to ensure entries are up to date
 #Add decrypting an entry/row using the master password
 #Add decrypted password to clipboard (Learn about risks and precautions)
 
