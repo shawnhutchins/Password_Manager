@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import ttk
 from tkinter import messagebox
 from random import choice, randint, shuffle
 import csv
@@ -129,29 +130,38 @@ print(f"Output: {plain_text}")
 # ---------------------------- UI Setup ------------------------------- #
 window = Tk()
 window.title("Password Manager")
-window.configure(padx=50, pady=50)
+window.configure(padx=30, pady=20)
+
+notebook = ttk.Notebook(master=window)
+encrypt_frame = ttk.Frame(master=notebook)
+decrypt_frame = ttk.Frame(master=notebook)
+
+notebook.add(encrypt_frame, text="Encrypt")
+notebook.add(decrypt_frame, text="Decrypt")
 
 #Logo
-canvas = Canvas(master=window, width=200, height=200)
+canvas = Canvas(master=encrypt_frame, width=200, height=200)
 logo_image = PhotoImage(file="logo.png")
 canvas.create_image(100, 100, image=logo_image)
 
 #Labels
-website_label = Label(master=window, text="Website:")
-username_label = Label(master=window, text="Email/Username:")
-password_label = Label(master=window, text="Password:")
+website_label = Label(master=encrypt_frame, text="Website:")
+username_label = Label(master=encrypt_frame, text="Email/Username:")
+password_label = Label(master=encrypt_frame, text="Password:")
 
 #Entries
-website_entry = Entry(master=window, width=35)
+website_entry = Entry(master=encrypt_frame, width=35)
 website_entry.focus()
-username_entry = Entry(master=window, width=35)
-password_entry = Entry(master=window, width=33)
+username_entry = Entry(master=encrypt_frame, width=35)
+password_entry = Entry(master=encrypt_frame, width=33)
 
 #Buttons
-generate_button = Button(master=window, text="Generate Password", command=generate_password)
-add_button = Button(master=window, text="Add", width=36, command=save_entry)
+generate_button = Button(master=encrypt_frame, text="Generate Password", command=generate_password)
+add_button = Button(master=encrypt_frame, text="Add", width=36, command=save_entry)
 
 # ---------------------------------- Grid ------------------------------- #
+notebook.pack(fill="both", expand=True)
+
 canvas.grid(row=0, column=1)
 
 #Labels
