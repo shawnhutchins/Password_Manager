@@ -25,6 +25,7 @@ DELIMITER = ","
 master_password = "default"
 
 #------------------------------ TASKS -----------------------------#
+#Add master password entry that does not clear and show text as dots
 #Add a tab to select an entry/row from a dropdown by website name to decrypt
 #When clicking on decrypt tab load the data.csv to ensure entries are up to date
 #Add decrypting an entry/row using the master password
