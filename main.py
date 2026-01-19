@@ -60,6 +60,7 @@ def decrypt(ciphertext: bytes, password: str, salt: bytes) -> str:
     except Exception as e:
         print(f"Unexpected error: {e}")
 
+#Loads the data.csv and returns the data as a list of lists
 def load_entries():
     try:
         with open("data.csv", mode="r", newline="") as csv_file:
@@ -133,10 +134,12 @@ window = Tk()
 window.title("Password Manager")
 window.configure(padx=30, pady=20)
 
+#Tabview
 notebook = ttk.Notebook(master=window)
 encrypt_frame = ttk.Frame(master=notebook)
 decrypt_frame = ttk.Frame(master=notebook)
 
+#Adding tabs
 notebook.add(encrypt_frame, text="Encrypt")
 notebook.add(decrypt_frame, text="Decrypt")
 
@@ -161,8 +164,10 @@ generate_button = Button(master=encrypt_frame, text="Generate Password", command
 add_button = Button(master=encrypt_frame, text="Add", width=36, command=save_entry)
 
 # ---------------------------------- Grid ------------------------------- #
+#Tabview
 notebook.pack(fill="both", expand=True)
 
+#Logo
 canvas.grid(row=0, column=1)
 
 #Labels
