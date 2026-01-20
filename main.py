@@ -118,14 +118,6 @@ def save_entry():
                            f"{password_salt}\n")
             clear_entries()
 
-#checking values temp
-cipher_text, u_salt = encrypt("plaintext", "password")
-cipher_text2, u_salt2 = encrypt("username+password", "password2")
-print(f"cipher text: {cipher_text}\nunique salt: {u_salt}")
-print(f"cipher text2: {cipher_text2}\nunique salt2: {u_salt2}")
-plain_text = decrypt(cipher_text, "password", u_salt)
-print(f"Output: {plain_text}")
-
 # ---------------------------- UI Setup ------------------------------- #
 window = Tk()
 window.title("Password Manager")
@@ -155,7 +147,7 @@ username_label = Label(master=encrypt_frame, text="Email/Username:")
 password_label = Label(master=encrypt_frame, text="Password:")
 
 #Entries
-master_pass_encrypt_entry = Entry(master=encrypt_frame, width=35, textvariable=master_password)
+master_pass_encrypt_entry = Entry(master=encrypt_frame, width=35, textvariable=master_password, show="*")
 website_entry = Entry(master=encrypt_frame, width=35)
 website_entry.focus()
 username_entry = Entry(master=encrypt_frame, width=35)
@@ -170,7 +162,7 @@ add_button = Button(master=encrypt_frame, text="Add", width=36, command=save_ent
 master_pass_decrypt_label = Label(master=decrypt_frame, text="Master Password:")
 
 #Entries
-master_pass_decrypt_entry = Entry(master=decrypt_frame, width=35, textvariable=master_password)
+master_pass_decrypt_entry = Entry(master=decrypt_frame, width=35, textvariable=master_password, show="*")
 
 # ---------------------------------- Grid ------------------------------- #
 #Tabview
@@ -202,5 +194,13 @@ master_pass_decrypt_label.grid(row=0, column=0, sticky="E")
 
 #Entries
 master_pass_decrypt_entry.grid(row=0, column=1, columnspan=2, sticky="WE")
+
+#checking values temp
+cipher_text, u_salt = encrypt("plaintext", master_password.get())
+cipher_text2, u_salt2 = encrypt("username+password", master_password.get())
+print(f"cipher text: {cipher_text}\nunique salt: {u_salt}")
+print(f"cipher text2: {cipher_text2}\nunique salt2: {u_salt2}")
+plain_text = decrypt(cipher_text, master_password.get(), u_salt)
+print(f"Output: {plain_text}")
 
 window.mainloop()
