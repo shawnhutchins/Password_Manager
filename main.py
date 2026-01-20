@@ -148,8 +148,8 @@ password_label = Label(master=encrypt_frame, text="Password:")
 
 #Entries
 master_pass_encrypt_entry = Entry(master=encrypt_frame, width=35, textvariable=master_password, show="*")
+master_pass_encrypt_entry.focus()
 website_entry = Entry(master=encrypt_frame, width=35)
-website_entry.focus()
 username_entry = Entry(master=encrypt_frame, width=35)
 password_entry = Entry(master=encrypt_frame, width=33)
 
