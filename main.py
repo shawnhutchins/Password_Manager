@@ -136,10 +136,12 @@ window.configure(padx=30, pady=20)
 
 #Tabview
 notebook = ttk.Notebook(master=window)
+master_pass_frame = ttk.Frame(master=notebook)
 encrypt_frame = ttk.Frame(master=notebook)
 decrypt_frame = ttk.Frame(master=notebook)
 
 #Adding tabs
+notebook.add(master_pass_frame, text="Master Password")
 notebook.add(encrypt_frame, text="Encrypt")
 notebook.add(decrypt_frame, text="Decrypt")
 
