@@ -142,19 +142,20 @@ decrypt_frame = ttk.Frame(master=notebook)
 notebook.add(encrypt_frame, text="Encrypt")
 notebook.add(decrypt_frame, text="Decrypt")
 
+# ---------------------------------- Encrypt Tab ------------------------------- #
 #Logo
 canvas = Canvas(master=encrypt_frame, width=200, height=200)
 logo_image = PhotoImage(file="logo.png")
 canvas.create_image(100, 100, image=logo_image)
 
 #Labels
-master_password_label = Label(master=encrypt_frame, text="Master Password:")
+master_pass_encrypt_label = Label(master=encrypt_frame, text="Master Password:")
 website_label = Label(master=encrypt_frame, text="Website:")
 username_label = Label(master=encrypt_frame, text="Email/Username:")
 password_label = Label(master=encrypt_frame, text="Password:")
 
 #Entries
-master_password_entry = Entry(master=encrypt_frame, width=35, textvariable=master_password)
+master_pass_encrypt_entry = Entry(master=encrypt_frame, width=35, textvariable=master_password)
 website_entry = Entry(master=encrypt_frame, width=35)
 website_entry.focus()
 username_entry = Entry(master=encrypt_frame, width=35)
@@ -164,21 +165,29 @@ password_entry = Entry(master=encrypt_frame, width=33)
 generate_button = Button(master=encrypt_frame, text="Generate Password", command=generate_password)
 add_button = Button(master=encrypt_frame, text="Add", width=36, command=save_entry)
 
+# ---------------------------------- Decrypt Tab ------------------------------- #
+#Labels
+master_pass_decrypt_label = Label(master=decrypt_frame, text="Master Password:")
+
+#Entries
+master_pass_decrypt_entry = Entry(master=decrypt_frame, width=35, textvariable=master_password)
+
 # ---------------------------------- Grid ------------------------------- #
 #Tabview
 notebook.pack(fill="both", expand=True)
 
+#Encrypt Tab
 #Logo
 canvas.grid(row=0, column=1)
 
 #Labels
-master_password_label.grid(row=1, column=0, sticky="E")
+master_pass_encrypt_label.grid(row=1, column=0, sticky="E")
 website_label.grid(row=2, column=0, sticky="E")
 username_label.grid(row=3, column=0, sticky="E")
 password_label.grid(row=4, column=0, sticky="E")
 
 #Entries
-master_password_entry.grid(row=1, column=1, columnspan=2, sticky="WE")
+master_pass_encrypt_entry.grid(row=1, column=1, columnspan=2, sticky="WE")
 website_entry.grid(row=2, column=1, columnspan=2, sticky="WE")
 username_entry.grid(row=3, column=1, columnspan=2, sticky="WE")
 password_entry.grid(row=4, column=1, sticky="W")
@@ -186,5 +195,12 @@ password_entry.grid(row=4, column=1, sticky="W")
 #Buttons
 generate_button.grid(row=4, column=2, sticky="W")
 add_button.grid(row=5, column=1, columnspan=2, sticky="WE")
+
+#Decrypt Tab
+#Labels
+master_pass_decrypt_label.grid(row=0, column=0, sticky="E")
+
+#Entries
+master_pass_decrypt_entry.grid(row=0, column=1, columnspan=2, sticky="WE")
 
 window.mainloop()
