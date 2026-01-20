@@ -21,9 +21,6 @@ KDF_ITERATIONS = 120000
 #using pipe with space for testing
 DELIMITER = ","
 
-#Temp value for testing
-master_password = "default"
-
 #------------------------------ TASKS -----------------------------#
 #Add master password entry that does not clear and show text as dots
 #Add a tab to select an entry/row from a dropdown by website name to decrypt
@@ -110,8 +107,8 @@ def save_entry():
                                                     f"Password: {password_entry.get()}\n\n"
                                                     f"Would you like to save?")
         if confirmed:
-            username_ciphertext, username_salt = encrypt(username_entry.get(), master_password)
-            password_ciphertext, password_salt = encrypt(password_entry.get(), master_password)
+            username_ciphertext, username_salt = encrypt(username_entry.get(), master_password.get())
+            password_ciphertext, password_salt = encrypt(password_entry.get(), master_password.get())
 
             with open("data.csv", mode="a") as file:
                 file.write(f"{website_entry.get()}{DELIMITER}"
@@ -126,13 +123,15 @@ cipher_text, u_salt = encrypt("plaintext", "password")
 cipher_text2, u_salt2 = encrypt("username+password", "password2")
 print(f"cipher text: {cipher_text}\nunique salt: {u_salt}")
 print(f"cipher text2: {cipher_text2}\nunique salt2: {u_salt2}")
-plain_text = decrypt(cipher_text, "password", u_salt2)
+plain_text = decrypt(cipher_text, "password", u_salt)
 print(f"Output: {plain_text}")
 
 # ---------------------------- UI Setup ------------------------------- #
 window = Tk()
 window.title("Password Manager")
 window.configure(padx=30, pady=20)
+
+master_password = StringVar()
 
 #Tabview
 notebook = ttk.Notebook(master=window)
@@ -149,11 +148,13 @@ logo_image = PhotoImage(file="logo.png")
 canvas.create_image(100, 100, image=logo_image)
 
 #Labels
+master_password_label = Label(master=encrypt_frame, text="Master Password:")
 website_label = Label(master=encrypt_frame, text="Website:")
 username_label = Label(master=encrypt_frame, text="Email/Username:")
 password_label = Label(master=encrypt_frame, text="Password:")
 
 #Entries
+master_password_entry = Entry(master=encrypt_frame, width=35, textvariable=master_password)
 website_entry = Entry(master=encrypt_frame, width=35)
 website_entry.focus()
 username_entry = Entry(master=encrypt_frame, width=35)
@@ -171,17 +172,19 @@ notebook.pack(fill="both", expand=True)
 canvas.grid(row=0, column=1)
 
 #Labels
-website_label.grid(row=1, column=0, sticky="E")
-username_label.grid(row=2, column=0, sticky="E")
-password_label.grid(row=3, column=0, sticky="E")
+master_password_label.grid(row=1, column=0, sticky="E")
+website_label.grid(row=2, column=0, sticky="E")
+username_label.grid(row=3, column=0, sticky="E")
+password_label.grid(row=4, column=0, sticky="E")
 
 #Entries
-website_entry.grid(row=1, column=1, columnspan=2, sticky="WE")
-username_entry.grid(row=2, column=1, columnspan=2, sticky="WE")
-password_entry.grid(row=3, column=1, sticky="W")
+master_password_entry.grid(row=1, column=1, columnspan=2, sticky="WE")
+website_entry.grid(row=2, column=1, columnspan=2, sticky="WE")
+username_entry.grid(row=3, column=1, columnspan=2, sticky="WE")
+password_entry.grid(row=4, column=1, sticky="W")
 
 #Buttons
-generate_button.grid(row=3, column=2, sticky="W")
-add_button.grid(row=4, column=1, columnspan=2, sticky="WE")
+generate_button.grid(row=4, column=2, sticky="W")
+add_button.grid(row=5, column=1, columnspan=2, sticky="WE")
 
 window.mainloop()
