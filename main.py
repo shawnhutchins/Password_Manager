@@ -106,8 +106,8 @@ def save_entry():
                                                     f"Password: {password_entry.get()}\n\n"
                                                     f"Would you like to save?")
         if confirmed:
-            username_ciphertext, username_salt = encrypt(username_entry.get(), master_password.get())
-            password_ciphertext, password_salt = encrypt(password_entry.get(), master_password.get())
+            username_ciphertext, username_salt = encrypt(username_entry.get(), master_password_var.get())
+            password_ciphertext, password_salt = encrypt(password_entry.get(), master_password_var.get())
 
             with open("data.csv", mode="a") as file:
                 file.write(f"{website_entry.get()}{DELIMITER}"
@@ -122,7 +122,8 @@ window = Tk()
 window.title("Password Manager")
 window.configure(padx=30, pady=20)
 
-master_password = StringVar()
+master_password_var = StringVar()
+decrypt_dropdown_var = StringVar()
 
 #Tabview
 notebook = ttk.Notebook(master=window)
@@ -146,7 +147,7 @@ username_label = Label(master=encrypt_frame, text="Email/Username:")
 password_label = Label(master=encrypt_frame, text="Password:")
 
 #Entries
-master_pass_encrypt_entry = Entry(master=encrypt_frame, width=35, textvariable=master_password, show="*")
+master_pass_encrypt_entry = Entry(master=encrypt_frame, width=35, textvariable=master_password_var, show="*")
 master_pass_encrypt_entry.focus()
 website_entry = Entry(master=encrypt_frame, width=35)
 username_entry = Entry(master=encrypt_frame, width=35)
@@ -161,9 +162,9 @@ add_button = Button(master=encrypt_frame, text="Add", width=36, command=save_ent
 master_pass_decrypt_label = Label(master=decrypt_frame, text="Master Password:")
 
 #Entries
-master_pass_decrypt_entry = Entry(master=decrypt_frame, width=35, textvariable=master_password, show="*")
+master_pass_decrypt_entry = Entry(master=decrypt_frame, width=35, textvariable=master_password_var, show="*")
 
-# ---------------------------------- Grid ------------------------------- #
+# ---------------------------------- Layout ------------------------------- #
 #Tabview
 notebook.pack(fill="both", expand=True)
 
@@ -195,11 +196,11 @@ master_pass_decrypt_label.grid(row=0, column=0, sticky="E")
 master_pass_decrypt_entry.grid(row=0, column=1, columnspan=2, sticky="WE")
 
 #checking values temp
-cipher_text, u_salt = encrypt("plaintext", master_password.get())
-cipher_text2, u_salt2 = encrypt("username+password", master_password.get())
+cipher_text, u_salt = encrypt("plaintext", master_password_var.get())
+cipher_text2, u_salt2 = encrypt("username+password", master_password_var.get())
 print(f"cipher text: {cipher_text}\nunique salt: {u_salt}")
 print(f"cipher text2: {cipher_text2}\nunique salt2: {u_salt2}")
-plain_text = decrypt(cipher_text, master_password.get(), u_salt)
+plain_text = decrypt(cipher_text, master_password_var.get(), u_salt)
 print(f"Output: {plain_text}")
 
 window.mainloop()
