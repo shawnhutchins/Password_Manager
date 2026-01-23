@@ -165,7 +165,7 @@ master_pass_decrypt_entry = Entry(master=decrypt_frame, width=35, textvariable=m
 
 #Temp testing/ needs to load on clicking decrypt tab
 data = load_entries()
-websites = [x[0] for x in data]
+websites = [entry[0] for entry in data]
 print(websites)
 
 decrypt_dropdown = ttk.Combobox(master=decrypt_frame, values=websites, state="readonly")
