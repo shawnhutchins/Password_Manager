@@ -169,6 +169,7 @@ websites = [x[0] for x in data]
 print(websites)
 
 decrypt_dropdown = ttk.Combobox(master=decrypt_frame, values=websites, state="readonly")
+decrypt_dropdown.set("Select a website")
 
 # ---------------------------------- Layout ------------------------------- #
 #Tabview
