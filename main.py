@@ -164,6 +164,13 @@ master_pass_decrypt_label = Label(master=decrypt_frame, text="Master Password:")
 #Entries
 master_pass_decrypt_entry = Entry(master=decrypt_frame, width=35, textvariable=master_password_var, show="*")
 
+#Temp testing/ needs to load on clicking decrypt tab
+data = load_entries()
+websites = [x[0] for x in data]
+print(websites)
+
+decrypt_dropdown = ttk.Combobox(master=decrypt_frame, values=websites)
+
 # ---------------------------------- Layout ------------------------------- #
 #Tabview
 notebook.pack(fill="both", expand=True)
@@ -194,6 +201,9 @@ master_pass_decrypt_label.grid(row=0, column=0, sticky="E")
 
 #Entries
 master_pass_decrypt_entry.grid(row=0, column=1, columnspan=2, sticky="WE")
+
+#Dropdown
+decrypt_dropdown.grid(row=1, column=1, sticky="W")
 
 #checking values temp
 cipher_text, u_salt = encrypt("plaintext", master_password_var.get())
