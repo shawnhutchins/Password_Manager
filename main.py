@@ -26,6 +26,7 @@ DELIMITER = ","
 #When clicking on decrypt tab load the data.csv to ensure entries are up to date
 #Add decrypting an entry/row using the master password
 #Add decrypted password to clipboard (Learn about risks and precautions)
+#Seperate encrypt and decrypt functions to their own file
 
 #Salts and Encrypts a string with a password. Returns ciphertext and salt
 def encrypt(plaintext: str, password: str) -> (bytes, bytes):
@@ -135,7 +136,7 @@ notebook.add(decrypt_frame, text="Decrypt")
 
 # ---------------------------------- Encrypt Tab ------------------------------- #
 #Logo
-canvas = Canvas(master=encrypt_frame, width=200, height=200)
+canvas = Canvas(master=window, width=200, height=200)
 logo_image = PhotoImage(file="logo.png")
 canvas.create_image(100, 100, image=logo_image)
 
@@ -172,13 +173,13 @@ decrypt_dropdown = ttk.Combobox(master=decrypt_frame, values=websites, state="re
 decrypt_dropdown.set("Select a website")
 
 # ---------------------------------- Layout ------------------------------- #
+#Logo
+canvas.pack()
+
 #Tabview
 notebook.pack(fill="both", expand=True)
 
 #Encrypt Tab
-#Logo
-canvas.grid(row=0, column=1)
-
 #Labels
 master_pass_encrypt_label.grid(row=1, column=0, sticky="E")
 website_label.grid(row=2, column=0, sticky="E")
