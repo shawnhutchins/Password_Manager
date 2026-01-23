@@ -123,7 +123,6 @@ window.title("Password Manager")
 window.configure(padx=30, pady=20)
 
 master_password_var = StringVar()
-decrypt_dropdown_var = StringVar()
 
 #Tabview
 notebook = ttk.Notebook(master=window)
