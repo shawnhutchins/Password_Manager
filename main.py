@@ -124,6 +124,7 @@ def save_entry():
             clear_entries()
 
 # ---------------------------- UI Setup ------------------------------- #
+#Main window
 window = Tk()
 window.title("Password Manager")
 window.configure(padx=30, pady=20)
@@ -184,7 +185,7 @@ canvas.pack()
 #Tabview
 notebook.pack(fill="both", expand=True)
 
-#Encrypt Tab
+#Encrypt Tab -------------------- #
 #Labels
 master_pass_encrypt_label.grid(row=1, column=0, sticky="E")
 website_label.grid(row=2, column=0, sticky="E")
@@ -201,7 +202,7 @@ password_entry.grid(row=4, column=1, sticky="W")
 generate_button.grid(row=4, column=2, sticky="W")
 add_button.grid(row=5, column=1, columnspan=2, sticky="WE")
 
-#Decrypt Tab
+#Decrypt Tab -------------------- #
 #Labels
 master_pass_decrypt_label.grid(row=0, column=0, sticky="E")
 
