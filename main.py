@@ -166,6 +166,7 @@ add_button = Button(master=encrypt_frame, text="Add", width=36, command=save_ent
 # ---------------------------------- Decrypt Tab ------------------------------- #
 #Labels
 master_pass_decrypt_label = Label(master=decrypt_frame, text="Master Password: ")
+website_select_label = Label(master=decrypt_frame, text="Website: ")
 decrypted_username_label = Label(master=decrypt_frame, text="Username: ")
 decrypted_password_label = Label(master=decrypt_frame, text="Password: ")
 
@@ -209,6 +210,7 @@ add_button.grid(row=5, column=1, columnspan=2, sticky="WE")
 #Decrypt Tab -------------------- #
 #Labels
 master_pass_decrypt_label.grid(row=0, column=0, sticky="E")
+website_select_label.grid(row=1, column=0, sticky="E")
 decrypted_username_label.grid(row=2, column=0, sticky="E")
 decrypted_password_label.grid(row=3, column=0, sticky="E")
 
