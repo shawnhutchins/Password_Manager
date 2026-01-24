@@ -22,10 +22,15 @@ KDF_ITERATIONS = 120000
 DELIMITER = ","
 
 #------------------------------ TASKS -----------------------------#
-#Add a tab to select an entry/row from a dropdown by website name to decrypt
-#When clicking on decrypt tab load the data.csv to ensure entries are up to date
 #Add decrypting an entry/row using the master password
-#Add decrypted password to clipboard (Learn about risks and precautions)
+#Add labels and entries for decrypted values
+#Add tool tips like: the generate password button also copies the password to the clipboard
+#Add button for decrypted username and password to copy each to the clipboard
+#Add a button to clear the clipboard
+#Delete "del" variables that holds the plaintext values of username and password
+#Add show/hide password button for the master password
+#Add a messagebox to confirm closing the app and clear the clipboard. Tell the user closing clears clipboard
+#When clicking on decrypt tab load the data.csv to ensure entries are up to date
 #Seperate encrypt and decrypt functions to their own file
 
 #Salts and Encrypts a string with a password. Returns ciphertext and salt
