@@ -22,13 +22,14 @@ KDF_ITERATIONS = 120000
 DELIMITER = ","
 
 #------------------------------ TASKS -----------------------------#
+#Add decrypt button to decrypt the selected row
+#Add decrypt_credentials() to handle decrypting when button is clicked
 #Add decrypting an entry/row using the master password
-#Add labels and entries for decrypted values
-#Add tool tips like: the generate password button also copies the password to the clipboard
 #Add button for decrypted username and password to copy each to the clipboard
 #Add a button to clear the clipboard
 #Add show/hide password button for the master password
 #Make decrypted username and password selectable but not editable
+#Add tool tips like: the generate password button also copies the password to the clipboard
 #Fix layout. columnconfigure/rowconfigure on the tab grid
 #Add a messagebox to confirm closing the app and clear the clipboard. Tell the user closing clears clipboard
 #When clicking on decrypt tab load the data.csv to ensure entries are up to date
