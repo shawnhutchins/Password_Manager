@@ -146,10 +146,10 @@ logo_image = PhotoImage(file="logo.png")
 canvas.create_image(100, 100, image=logo_image)
 
 #Labels
-master_pass_encrypt_label = Label(master=encrypt_frame, text="Master Password:")
-website_label = Label(master=encrypt_frame, text="Website:")
-username_label = Label(master=encrypt_frame, text="Email/Username:")
-password_label = Label(master=encrypt_frame, text="Password:")
+master_pass_encrypt_label = Label(master=encrypt_frame, text="Master Password: ")
+website_label = Label(master=encrypt_frame, text="Website: ")
+username_label = Label(master=encrypt_frame, text="Email/Username: ")
+password_label = Label(master=encrypt_frame, text="Password: ")
 
 #Entries
 master_pass_encrypt_entry = Entry(master=encrypt_frame, width=35, textvariable=master_password_var, show="*")
@@ -164,7 +164,7 @@ add_button = Button(master=encrypt_frame, text="Add", width=36, command=save_ent
 
 # ---------------------------------- Decrypt Tab ------------------------------- #
 #Labels
-master_pass_decrypt_label = Label(master=decrypt_frame, text="Master Password:")
+master_pass_decrypt_label = Label(master=decrypt_frame, text="Master Password: ")
 
 #Entries
 master_pass_decrypt_entry = Entry(master=decrypt_frame, width=35, textvariable=master_password_var, show="*")
