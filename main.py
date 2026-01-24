@@ -28,6 +28,7 @@ DELIMITER = ","
 #Add button for decrypted username and password to copy each to the clipboard
 #Add a button to clear the clipboard
 #Add show/hide password button for the master password
+#Fix layout. columnconfigure/rowconfigure on the tab grid
 #Add a messagebox to confirm closing the app and clear the clipboard. Tell the user closing clears clipboard
 #When clicking on decrypt tab load the data.csv to ensure entries are up to date
 #Seperate encrypt and decrypt functions to their own file
@@ -208,9 +209,13 @@ add_button.grid(row=5, column=1, columnspan=2, sticky="WE")
 #Decrypt Tab -------------------- #
 #Labels
 master_pass_decrypt_label.grid(row=0, column=0, sticky="E")
+decrypted_username_label.grid(row=2, column=0, sticky="E")
+decrypted_password_label.grid(row=3, column=0, sticky="E")
 
 #Entries
-master_pass_decrypt_entry.grid(row=0, column=1, columnspan=2, sticky="WE")
+master_pass_decrypt_entry.grid(row=0, column=1, sticky="WE")
+decrypted_username_entry.grid(row=2, column=1, sticky="WE")
+decrypted_password_entry.grid(row=3, column=1, sticky="WE")
 
 #Dropdown
 decrypt_dropdown.grid(row=1, column=1, sticky="W")
