@@ -28,6 +28,7 @@ DELIMITER = ","
 #Add button for decrypted username and password to copy each to the clipboard
 #Add a button to clear the clipboard
 #Add show/hide password button for the master password
+#Make decrypted username and password selectable but not editable
 #Fix layout. columnconfigure/rowconfigure on the tab grid
 #Add a messagebox to confirm closing the app and clear the clipboard. Tell the user closing clears clipboard
 #When clicking on decrypt tab load the data.csv to ensure entries are up to date
