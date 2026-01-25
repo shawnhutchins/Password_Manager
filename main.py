@@ -174,8 +174,8 @@ decrypted_password_label = Label(master=decrypt_frame, text="Password: ")
 
 #Entries
 master_pass_decrypt_entry = Entry(master=decrypt_frame, width=35, textvariable=master_password_var, show="*")
-decrypted_username_entry = Entry(master=decrypt_frame, width=35)
-decrypted_password_entry = Entry(master=decrypt_frame, width=35)
+decrypted_username_entry = Entry(master=decrypt_frame, width=35, state="readonly")
+decrypted_password_entry = Entry(master=decrypt_frame, width=35, state="readonly")
 
 #Temp testing/ needs to load on clicking decrypt tab
 data = load_entries()
