@@ -22,7 +22,6 @@ KDF_ITERATIONS = 120000
 DELIMITER = ","
 
 #------------------------------ TASKS -----------------------------#
-#Add decrypt button to decrypt the selected row
 #Add decrypt_credentials() to handle decrypting when button is clicked
 #Add decrypting an entry/row using the master password
 #Add button for decrypted username and password to copy each to the clipboard
@@ -125,6 +124,19 @@ def save_entry():
                            f"{password_salt}\n")
             clear_encrypt_entries()
 
+def toggle_show_master_pass():
+    encrypt_show_state = master_pass_encrypt_entry.cget("show")
+    decrypt_show_state = master_pass_decrypt_entry.cget("show")
+
+    if encrypt_show_state or decrypt_show_state == "*":
+        master_pass_encrypt_entry.configure(show="")
+        master_pass_decrypt_entry.configure(show="")
+        de_toggle_show_master_pass_button.configure(text="Hide Password")
+    else:
+        master_pass_encrypt_entry.configure(show="*")
+        master_pass_decrypt_entry.configure(show="*")
+        de_toggle_show_master_pass_button.configure(text="Show Password")
+
 # ---------------------------- UI Setup ------------------------------- #
 #Main window
 window = Tk()
@@ -178,7 +190,7 @@ decrypted_username_entry = Entry(master=decrypt_frame, width=35, state="readonly
 decrypted_password_entry = Entry(master=decrypt_frame, width=35, state="readonly")
 
 #Buttons
-de_toggle_show_master_pass_button = Button(master=decrypt_frame, text="Show Password")
+de_toggle_show_master_pass_button = Button(master=decrypt_frame, text="Show Password", command=toggle_show_master_pass)
 decrypted_copy_username_button = Button(master=decrypt_frame, text="Copy")
 decrypted_copy_password_button = Button(master=decrypt_frame, text="Copy")
 decrypt_button = Button(master=decrypt_frame, text="Decrypt")
