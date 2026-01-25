@@ -167,13 +167,14 @@ username_label = Label(master=encrypt_frame, text="Email/Username: ")
 password_label = Label(master=encrypt_frame, text="Password: ")
 
 #Entries
-master_pass_encrypt_entry = Entry(master=encrypt_frame, width=35, textvariable=master_password_var, show="*")
+master_pass_encrypt_entry = Entry(master=encrypt_frame, width=33, textvariable=master_password_var, show="*")
 master_pass_encrypt_entry.focus()
 website_entry = Entry(master=encrypt_frame, width=35)
 username_entry = Entry(master=encrypt_frame, width=35)
 password_entry = Entry(master=encrypt_frame, width=33)
 
 #Buttons
+en_toggle_show_master_pass_button = Button(master=encrypt_frame, text="Show Password", command=toggle_show_master_pass)
 generate_button = Button(master=encrypt_frame, text="Generate Password", command=generate_password)
 add_button = Button(master=encrypt_frame, text="Add", width=36, command=save_entry)
 
@@ -218,13 +219,14 @@ username_label.grid(row=3, column=0, sticky="E")
 password_label.grid(row=4, column=0, sticky="E")
 
 #Entries
-master_pass_encrypt_entry.grid(row=1, column=1, columnspan=2, sticky="WE")
+master_pass_encrypt_entry.grid(row=1, column=1, sticky="WE")
 website_entry.grid(row=2, column=1, columnspan=2, sticky="WE")
 username_entry.grid(row=3, column=1, columnspan=2, sticky="WE")
-password_entry.grid(row=4, column=1, sticky="W")
+password_entry.grid(row=4, column=1, sticky="WE")
 
 #Buttons
-generate_button.grid(row=4, column=2, sticky="W")
+en_toggle_show_master_pass_button.grid(row=1, column=2, sticky="WE")
+generate_button.grid(row=4, column=2, sticky="WE")
 add_button.grid(row=5, column=1, columnspan=2, sticky="WE")
 
 #Decrypt Tab -------------------- #
@@ -240,13 +242,13 @@ decrypted_username_entry.grid(row=2, column=1, sticky="WE")
 decrypted_password_entry.grid(row=3, column=1, sticky="WE")
 
 #Buttons
-de_toggle_show_master_pass_button.grid(row=0, column=2, sticky="W")
-decrypted_copy_username_button.grid(row=2, column=2, sticky="W")
-decrypted_copy_password_button.grid(row=3, column=2, sticky="W")
-decrypt_button.grid(row=4, column=1, sticky="WE")
+de_toggle_show_master_pass_button.grid(row=0, column=2, sticky="WE")
+decrypted_copy_username_button.grid(row=2, column=2, sticky="WE")
+decrypted_copy_password_button.grid(row=3, column=2, sticky="WE")
+decrypt_button.grid(row=4, column=1, columnspan=2, sticky="WE")
 
 #Dropdown
-decrypt_dropdown.grid(row=1, column=1, sticky="W")
+decrypt_dropdown.grid(row=1, column=1, sticky="WE")
 
 #checking values temp
 cipher_text, u_salt = encrypt("plaintext", master_password_var.get())
