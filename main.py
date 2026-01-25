@@ -213,21 +213,21 @@ notebook.pack(fill="both", expand=True)
 
 #Encrypt Tab -------------------- #
 #Labels
-master_pass_encrypt_label.grid(row=1, column=0, sticky="E")
-website_label.grid(row=2, column=0, sticky="E")
-username_label.grid(row=3, column=0, sticky="E")
-password_label.grid(row=4, column=0, sticky="E")
+master_pass_encrypt_label.grid(row=0, column=0, sticky="E")
+website_label.grid(row=1, column=0, sticky="E")
+username_label.grid(row=2, column=0, sticky="E")
+password_label.grid(row=3, column=0, sticky="E")
 
 #Entries
-master_pass_encrypt_entry.grid(row=1, column=1, sticky="WE")
-website_entry.grid(row=2, column=1, columnspan=2, sticky="WE")
-username_entry.grid(row=3, column=1, columnspan=2, sticky="WE")
-password_entry.grid(row=4, column=1, sticky="WE")
+master_pass_encrypt_entry.grid(row=0, column=1, sticky="WE")
+website_entry.grid(row=1, column=1, columnspan=2, sticky="WE")
+username_entry.grid(row=2, column=1, columnspan=2, sticky="WE")
+password_entry.grid(row=3, column=1, sticky="WE")
 
 #Buttons
-en_toggle_show_master_pass_button.grid(row=1, column=2, sticky="WE")
-generate_button.grid(row=4, column=2, sticky="WE")
-add_button.grid(row=5, column=1, columnspan=2, sticky="WE")
+en_toggle_show_master_pass_button.grid(row=0, column=2, sticky="WE")
+generate_button.grid(row=3, column=2, sticky="WE")
+add_button.grid(row=4, column=1, columnspan=2, sticky="WE")
 
 #Decrypt Tab -------------------- #
 #Labels
