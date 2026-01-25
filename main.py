@@ -131,10 +131,12 @@ def toggle_show_master_pass():
     if encrypt_show_state or decrypt_show_state == "*":
         master_pass_encrypt_entry.configure(show="")
         master_pass_decrypt_entry.configure(show="")
+        en_toggle_show_master_pass_button.configure(text="Hide Password")
         de_toggle_show_master_pass_button.configure(text="Hide Password")
     else:
         master_pass_encrypt_entry.configure(show="*")
         master_pass_decrypt_entry.configure(show="*")
+        en_toggle_show_master_pass_button.configure(text="Show Password")
         de_toggle_show_master_pass_button.configure(text="Show Password")
 
 # ---------------------------- UI Setup ------------------------------- #
