@@ -93,13 +93,13 @@ def generate_password():
     pyperclip.copy(finished_password)
 
 #Clears input from all 3 entries
-def clear_entries():
+def clear_encrypt_entries():
     website_entry.delete(0, END)
     username_entry.delete(0, END)
     password_entry.delete(0, END)
 
 #Validates that none of the entries are empty
-def validate_input():
+def validate_encrypt_input():
     if len(website_entry.get()) > 0 and len(username_entry.get()) > 0 and len(password_entry.get()) > 0:
         return True
     else:
@@ -108,7 +108,7 @@ def validate_input():
 
 #Saves the credentials entered to the data.csv file
 def save_entry():
-    if validate_input():
+    if validate_encrypt_input():
         confirmed = messagebox.askokcancel(title=website_entry.get(),
                                             message=f"Username: {username_entry.get()}\n"
                                                     f"Password: {password_entry.get()}\n\n"
@@ -123,7 +123,7 @@ def save_entry():
                            f"{username_salt}{DELIMITER}"
                            f"{password_ciphertext}{DELIMITER}"
                            f"{password_salt}\n")
-            clear_entries()
+            clear_encrypt_entries()
 
 # ---------------------------- UI Setup ------------------------------- #
 #Main window
