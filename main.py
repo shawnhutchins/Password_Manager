@@ -177,6 +177,12 @@ master_pass_decrypt_entry = Entry(master=decrypt_frame, width=35, textvariable=m
 decrypted_username_entry = Entry(master=decrypt_frame, width=35, state="readonly")
 decrypted_password_entry = Entry(master=decrypt_frame, width=35, state="readonly")
 
+#Buttons
+de_toggle_show_master_pass_button = Button(master=decrypt_frame, text="Show Password")
+decrypted_copy_username_button = Button(master=decrypt_frame, text="Copy")
+decrypted_copy_password_button = Button(master=decrypt_frame, text="Copy")
+decrypt_button = Button(master=decrypt_frame, text="Decrypt")
+
 #Temp testing/ needs to load on clicking decrypt tab
 data = load_entries()
 websites = [entry[0] for entry in data]
@@ -220,6 +226,12 @@ decrypted_password_label.grid(row=3, column=0, sticky="E")
 master_pass_decrypt_entry.grid(row=0, column=1, sticky="WE")
 decrypted_username_entry.grid(row=2, column=1, sticky="WE")
 decrypted_password_entry.grid(row=3, column=1, sticky="WE")
+
+#Buttons
+de_toggle_show_master_pass_button.grid(row=0, column=2, sticky="W")
+decrypted_copy_username_button.grid(row=2, column=2, sticky="W")
+decrypted_copy_password_button.grid(row=3, column=2, sticky="W")
+decrypt_button.grid(row=4, column=1, sticky="WE")
 
 #Dropdown
 decrypt_dropdown.grid(row=1, column=1, sticky="W")
