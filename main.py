@@ -200,8 +200,12 @@ decrypt_button = Button(master=decrypt_frame, text="Decrypt")
 
 #Temp testing/ needs to load on clicking decrypt tab
 data = load_entries()
-websites = [entry[0] for entry in data]
-print(websites)
+websites = []
+try:
+    websites = [entry[0] for entry in data]
+    print(websites)
+except Exception as e:
+    print(f"Unexpected error: {e}")
 
 decrypt_dropdown = ttk.Combobox(master=decrypt_frame, values=websites, state="readonly")
 decrypt_dropdown.set("Select a website")
