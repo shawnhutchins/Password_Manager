@@ -213,6 +213,12 @@ canvas.pack()
 #Tabview
 notebook.pack(fill="both", expand=True)
 
+encrypt_frame.grid_rowconfigure(0, weight=1)
+encrypt_frame.grid_columnconfigure(0, weight=1)
+
+decrypt_frame.grid_rowconfigure(0, weight=1)
+decrypt_frame.grid_columnconfigure(0, weight=1)
+
 #Encrypt Tab -------------------- #
 #Labels
 master_pass_encrypt_label.grid(row=0, column=0, sticky="E")
