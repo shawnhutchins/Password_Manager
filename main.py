@@ -25,7 +25,7 @@ DELIMITER = ","
 #Add decrypt_credentials() to handle decrypting when button is clicked
 #Add decrypting an entry/row using the master password
 #Add button for decrypted username and password to copy each to the clipboard
-#Add a button to clear the clipboard
+#Add a button to clear the clipboard in bottom right next to decrypt button
 #Add show/hide password button for the master password
 #Make decrypted username and password selectable but not editable
 #Add tool tips like: the generate password button also copies the password to the clipboard
