@@ -3,6 +3,7 @@ from tkinter import ttk
 from tkinter import messagebox
 from random import choice, randint, shuffle
 import csv
+import ast
 import pyperclip
 
 #Cryptography imports
@@ -139,6 +140,28 @@ def toggle_show_master_pass():
         en_toggle_show_master_pass_button.configure(text="Show Password")
         de_toggle_show_master_pass_button.configure(text="Show Password")
 
+def decrypt_credentials():
+    credential = decrypt_dropdown.get()
+    row = [row for row in data if row[0] == credential]
+
+    username_ciphertext = ast.literal_eval(row[0][1])
+    username_salt = ast.literal_eval(row[0][2])
+    password_ciphertext = ast.literal_eval(row[0][3])
+    password_salt = ast.literal_eval(row[0][4])
+
+    username_plaintext = decrypt(username_ciphertext, master_password_var.get(), username_salt)
+    password_plaintext = decrypt(password_ciphertext, master_password_var.get(), password_salt)
+
+    decrypted_username_entry.configure(state="normal")
+    decrypted_username_entry.delete(0, "end")
+    decrypted_username_entry.insert(0, username_plaintext)
+    decrypted_username_entry.configure(state="readonly")
+
+    decrypted_password_entry.configure(state="normal")
+    decrypted_password_entry.delete(0, "end")
+    decrypted_password_entry.insert(0, password_plaintext)
+    decrypted_password_entry.configure(state="readonly")
+
 # ---------------------------- UI Setup ------------------------------- #
 #Main window
 window = Tk()
@@ -196,7 +219,7 @@ decrypted_password_entry = Entry(master=decrypt_frame, width=35, state="readonly
 de_toggle_show_master_pass_button = Button(master=decrypt_frame, text="Show Password", command=toggle_show_master_pass)
 decrypted_copy_username_button = Button(master=decrypt_frame, text="Copy")
 decrypted_copy_password_button = Button(master=decrypt_frame, text="Copy")
-decrypt_button = Button(master=decrypt_frame, text="Decrypt")
+decrypt_button = Button(master=decrypt_frame, text="Decrypt", command=decrypt_credentials)
 
 #Temp testing/ needs to load on clicking decrypt tab
 data = load_entries()
