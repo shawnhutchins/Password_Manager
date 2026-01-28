@@ -122,6 +122,7 @@ def save_entry():
                            f"{password_salt}\n")
             clear_encrypt_entries()
 
+#Toggles showing the master password on both tabs
 def toggle_show_master_pass():
     encrypt_show_state = master_pass_encrypt_entry.cget("show")
     decrypt_show_state = master_pass_decrypt_entry.cget("show")
@@ -137,6 +138,7 @@ def toggle_show_master_pass():
         en_toggle_show_master_pass_button.configure(text="Show Password")
         de_toggle_show_master_pass_button.configure(text="Show Password")
 
+#Decrypts the selected row and sets the username/password entries to their respective values
 def decrypt_credentials():
     credential = decrypt_dropdown.get()
     row = [row for row in data if row[0] == credential]
