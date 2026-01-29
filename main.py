@@ -29,6 +29,7 @@ DELIMITER = ","
 #Add a messagebox to confirm closing the app and clear the clipboard. Tell the user closing clears clipboard
 #When clicking on decrypt tab load the data.csv to ensure entries are up to date and clear the entries
 #Seperate encrypt and decrypt functions to their own file
+#Refactor to use a class for each tab
 
 #Salts and Encrypts a string with a password. Returns ciphertext and salt
 def encrypt(plaintext: str, password: str) -> (bytes, bytes):
