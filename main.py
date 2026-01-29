@@ -116,10 +116,10 @@ def save_entry():
 
             with open("data.csv", mode="a") as file:
                 file.write(f"{website_entry.get()}{DELIMITER}"
-                           f"{username_ciphertext}{DELIMITER}"
-                           f"{username_salt}{DELIMITER}"
-                           f"{password_ciphertext}{DELIMITER}"
-                           f"{password_salt}\n")
+                           f"{username_ciphertext.decode("utf-8")}{DELIMITER}"
+                           f"{base64.b64encode(username_salt).decode("utf-8")}{DELIMITER}"
+                           f"{password_ciphertext.decode("utf-8")}{DELIMITER}"
+                           f"{base64.b64encode(password_salt).decode("utf-8")}\n")
             clear_encrypt_entries()
 
 #Toggles showing the master password on both tabs
@@ -143,10 +143,10 @@ def decrypt_credentials():
     credential = decrypt_dropdown.get()
     row = [row for row in data if row[0] == credential]
 
-    username_ciphertext = ast.literal_eval(row[0][1])
-    username_salt = ast.literal_eval(row[0][2])
-    password_ciphertext = ast.literal_eval(row[0][3])
-    password_salt = ast.literal_eval(row[0][4])
+    username_ciphertext = row[0][1].encode("utf-8")
+    username_salt = base64.b64decode(row[0][2].encode("utf-8"))
+    password_ciphertext = row[0][3].encode("utf-8")
+    password_salt = base64.b64decode(row[0][4].encode("utf-8"))
 
     username_plaintext = decrypt(username_ciphertext, master_password_var.get(), username_salt)
     password_plaintext = decrypt(password_ciphertext, master_password_var.get(), password_salt)
