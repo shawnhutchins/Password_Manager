@@ -114,12 +114,17 @@ def save_entry():
             username_ciphertext, username_salt = encrypt(username_entry.get(), master_password_var.get())
             password_ciphertext, password_salt = encrypt(password_entry.get(), master_password_var.get())
 
+            username_ciphertext_str = username_ciphertext.decode("utf-8")
+            username_salt_str = base64.b64encode(username_salt).decode("utf-8")
+            password_ciphertext_str = password_ciphertext.decode("utf-8")
+            password_salt_str = base64.b64encode(password_salt).decode("utf-8")
+
             with open("data.csv", mode="a") as file:
                 file.write(f"{website_entry.get()}{DELIMITER}"
-                           f"{username_ciphertext.decode("utf-8")}{DELIMITER}"
-                           f"{base64.b64encode(username_salt).decode("utf-8")}{DELIMITER}"
-                           f"{password_ciphertext.decode("utf-8")}{DELIMITER}"
-                           f"{base64.b64encode(password_salt).decode("utf-8")}\n")
+                           f"{username_ciphertext_str}{DELIMITER}"
+                           f"{username_salt_str}{DELIMITER}"
+                           f"{password_ciphertext_str}{DELIMITER}"
+                           f"{password_salt_str}\n")
             clear_encrypt_entries()
 
 #Toggles showing the master password on both tabs
