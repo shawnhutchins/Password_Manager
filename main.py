@@ -172,6 +172,7 @@ def copy_decrypted_password():
 
 def confirm_close():
     if messagebox.askokcancel("Exit", "The clipboard will be erased.\nAre you sure you want to quit?"):
+        pyperclip.copy("")
         window.destroy()
 
 # ---------------------------- UI Setup ------------------------------- #
