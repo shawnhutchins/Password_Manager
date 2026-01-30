@@ -165,6 +165,12 @@ def decrypt_credentials():
     decrypted_password_entry.insert(0, password_plaintext)
     decrypted_password_entry.configure(state="readonly")
 
+def copy_decrypted_username():
+    pyperclip.copy(decrypted_username_entry.get())
+
+def copy_decrypted_password():
+    pyperclip.copy(decrypted_password_entry.get())
+
 # ---------------------------- UI Setup ------------------------------- #
 #Main window
 window = Tk()
@@ -220,8 +226,8 @@ decrypted_password_entry = Entry(master=decrypt_frame, width=35, state="readonly
 
 #Buttons
 de_toggle_show_master_pass_button = Button(master=decrypt_frame, text="Show Password", command=toggle_show_master_pass)
-decrypted_copy_username_button = Button(master=decrypt_frame, text="Copy")
-decrypted_copy_password_button = Button(master=decrypt_frame, text="Copy")
+copy_decrypted_username_button = Button(master=decrypt_frame, text="Copy", command=copy_decrypted_username)
+copy_decrypted_password_button = Button(master=decrypt_frame, text="Copy", command=copy_decrypted_password)
 decrypt_button = Button(master=decrypt_frame, text="Decrypt", command=decrypt_credentials)
 
 #Temp testing/ needs to load on clicking decrypt tab
@@ -281,8 +287,8 @@ decrypted_password_entry.grid(row=3, column=1, sticky="WE")
 
 #Buttons
 de_toggle_show_master_pass_button.grid(row=0, column=2, sticky="WE")
-decrypted_copy_username_button.grid(row=2, column=2, sticky="WE")
-decrypted_copy_password_button.grid(row=3, column=2, sticky="WE")
+copy_decrypted_username_button.grid(row=2, column=2, sticky="WE")
+copy_decrypted_password_button.grid(row=3, column=2, sticky="WE")
 decrypt_button.grid(row=4, column=1, columnspan=2, sticky="WE")
 
 #Dropdown
