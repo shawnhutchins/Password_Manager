@@ -170,11 +170,16 @@ def copy_decrypted_username():
 def copy_decrypted_password():
     pyperclip.copy(decrypted_password_entry.get())
 
+def confirm_close():
+    if messagebox.askokcancel("Exit", "The clipboard will be erased.\nAre you sure you want to quit?"):
+        window.destroy()
+
 # ---------------------------- UI Setup ------------------------------- #
 #Main window
 window = Tk()
 window.title("Password Manager")
 window.configure(padx=30, pady=20)
+window.protocol("WM_DELETE_WINDOW", confirm_close)
 
 master_password_var = StringVar()
 
