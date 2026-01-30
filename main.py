@@ -25,7 +25,6 @@ DELIMITER = ","
 #Add a button to clear the clipboard in bottom right next to decrypt button
 #Add tool tips like: the generate password button also copies the password to the clipboard
 #Fix layout
-#Add a messagebox to confirm closing the app and clear the clipboard. Tell the user closing clears clipboard
 #When clicking on decrypt tab load the data.csv to ensure entries are up to date and clear the entries
 #Seperate encrypt and decrypt functions to their own file
 #Refactor to use a class for each tab
@@ -172,7 +171,9 @@ def copy_decrypted_password():
 
 def confirm_close():
     if messagebox.askokcancel("Exit", "The clipboard will be erased.\nAre you sure you want to quit?"):
+        #Clear the clipboard
         pyperclip.copy("")
+        #Close the window/app
         window.destroy()
 
 # ---------------------------- UI Setup ------------------------------- #
