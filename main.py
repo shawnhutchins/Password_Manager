@@ -60,17 +60,6 @@ def decrypt(ciphertext: bytes, password: str, salt: bytes) -> str:
     except Exception as e:
         print(f"Unexpected error: {e}")
 
-#Loads the data.csv and returns the data as a list of lists
-def load_entries():
-    try:
-        with open("data.csv", mode="r", newline="") as csv_file:
-            csv_reader = csv.reader(csv_file, delimiter=DELIMITER)
-            return list(csv_reader)
-    except FileNotFoundError:
-        print("data.csv not found.")
-    except Exception as e:
-        print(f"Unexpected error: {e}")
-
 #Generates a strong password, inserts the password into the password_entry, and copies it to the clipboard
 def generate_password():
     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
@@ -125,6 +114,17 @@ def save_entry():
                            f"{password_ciphertext_str}{DELIMITER}"
                            f"{password_salt_str}\n")
             clear_encrypt_entries()
+
+#Loads the data.csv and returns the data as a list of lists
+def load_entries():
+    try:
+        with open("data.csv", mode="r", newline="") as csv_file:
+            csv_reader = csv.reader(csv_file, delimiter=DELIMITER)
+            return list(csv_reader)
+    except FileNotFoundError:
+        print("data.csv not found.")
+    except Exception as e:
+        print(f"Unexpected error: {e}")
 
 #Toggles showing the master password on both tabs
 def toggle_show_master_pass():
