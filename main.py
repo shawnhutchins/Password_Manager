@@ -171,6 +171,9 @@ def copy_decrypted_username():
 def copy_decrypted_password():
     pyperclip.copy(decrypted_password_entry.get())
 
+def clear_clipboard():
+    pyperclip.copy("")
+
 def confirm_close():
     if messagebox.askokcancel("Exit", "The clipboard will be erased.\nAre you sure you want to quit?"):
         #Clear the clipboard
@@ -237,7 +240,7 @@ de_toggle_show_master_pass_button = Button(master=decrypt_frame, text="Show Pass
 copy_decrypted_username_button = Button(master=decrypt_frame, text="Copy", command=copy_decrypted_username)
 copy_decrypted_password_button = Button(master=decrypt_frame, text="Copy", command=copy_decrypted_password)
 decrypt_button = Button(master=decrypt_frame, text="Decrypt", command=decrypt_credentials)
-clear_clipboard_button = Button(master=decrypt_frame, text="Clear Clipboard")
+de_clear_clipboard_button = Button(master=decrypt_frame, text="Clear Clipboard", command=clear_clipboard)
 
 #Temp testing/ needs to load on clicking decrypt tab
 data = load_entries()
@@ -299,7 +302,7 @@ de_toggle_show_master_pass_button.grid(row=0, column=2, sticky="WE")
 copy_decrypted_username_button.grid(row=2, column=2, sticky="WE")
 copy_decrypted_password_button.grid(row=3, column=2, sticky="WE")
 decrypt_button.grid(row=4, column=1, sticky="WE")
-clear_clipboard_button.grid(row=4, column=2, sticky="WE")
+de_clear_clipboard_button.grid(row=4, column=2, sticky="WE")
 
 #Dropdown
 decrypt_dropdown.grid(row=1, column=1, sticky="WE")
