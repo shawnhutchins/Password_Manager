@@ -212,16 +212,17 @@ username_label = Label(master=encrypt_frame, text="Email/Username: ")
 password_label = Label(master=encrypt_frame, text="Password: ")
 
 #Entries
-master_pass_encrypt_entry = Entry(master=encrypt_frame, width=33, textvariable=master_password_var, show="*")
+master_pass_encrypt_entry = Entry(master=encrypt_frame, textvariable=master_password_var, show="*", width=33)
 master_pass_encrypt_entry.focus()
-website_entry = Entry(master=encrypt_frame, width=35)
-username_entry = Entry(master=encrypt_frame, width=35)
-password_entry = Entry(master=encrypt_frame, width=33)
+website_entry = Entry(master=encrypt_frame)
+username_entry = Entry(master=encrypt_frame)
+password_entry = Entry(master=encrypt_frame)
 
 #Buttons
-en_toggle_show_master_pass_button = Button(master=encrypt_frame, text="Show Password", command=toggle_show_master_pass)
+en_toggle_show_master_pass_button = Button(master=encrypt_frame, text="Show Password", command=toggle_show_master_pass, width=16)
 generate_button = Button(master=encrypt_frame, text="Generate Password", command=generate_password)
-add_button = Button(master=encrypt_frame, text="Add", width=36, command=save_entry)
+add_button = Button(master=encrypt_frame, text="Add", command=save_entry)
+en_clear_clipboard_button = Button(master=encrypt_frame, text="Clear Clipboard", command=clear_clipboard)
 
 # ---------------------------------- Decrypt Tab ------------------------------- #
 #Labels
@@ -231,12 +232,12 @@ decrypted_username_label = Label(master=decrypt_frame, text="Username: ")
 decrypted_password_label = Label(master=decrypt_frame, text="Password: ")
 
 #Entries
-master_pass_decrypt_entry = Entry(master=decrypt_frame, width=35, textvariable=master_password_var, show="*")
-decrypted_username_entry = Entry(master=decrypt_frame, width=35, state="readonly")
-decrypted_password_entry = Entry(master=decrypt_frame, width=35, state="readonly")
+master_pass_decrypt_entry = Entry(master=decrypt_frame, textvariable=master_password_var, show="*", width=33)
+decrypted_username_entry = Entry(master=decrypt_frame, state="readonly")
+decrypted_password_entry = Entry(master=decrypt_frame, state="readonly")
 
 #Buttons
-de_toggle_show_master_pass_button = Button(master=decrypt_frame, text="Show Password", command=toggle_show_master_pass)
+de_toggle_show_master_pass_button = Button(master=decrypt_frame, text="Show Password", command=toggle_show_master_pass, width=16)
 copy_decrypted_username_button = Button(master=decrypt_frame, text="Copy", command=copy_decrypted_username)
 copy_decrypted_password_button = Button(master=decrypt_frame, text="Copy", command=copy_decrypted_password)
 decrypt_button = Button(master=decrypt_frame, text="Decrypt", command=decrypt_credentials)
@@ -283,7 +284,8 @@ password_entry.grid(row=3, column=1, sticky="WE")
 #Buttons
 en_toggle_show_master_pass_button.grid(row=0, column=2, sticky="WE")
 generate_button.grid(row=3, column=2, sticky="WE")
-add_button.grid(row=4, column=1, columnspan=2, sticky="WE")
+add_button.grid(row=4, column=1, sticky="WE")
+en_clear_clipboard_button.grid(row=4, column=2, sticky="WE")
 
 #Decrypt Tab -------------------- #
 #Labels
