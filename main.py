@@ -22,7 +22,10 @@ KDF_ITERATIONS = 120000
 DELIMITER = ","
 
 #------------------------------ TASKS -----------------------------#
-#Add a button to clear the clipboard in bottom right next to decrypt button
+#Verify inputs for the decrypt tab before allowing decryption. dropdown selection, master password filled
+#When there is an error with validating the inputs for the decrypt tab use a messagebox to tell the user
+#Move logo code above the encrypt tab divider
+#Set column widths or percents for the grid on each frame (tab)
 #Add tool tips like: the generate password button also copies the password to the clipboard
 #Fix layout
 #When clicking on decrypt tab load the data.csv to ensure entries are up to date and clear the entries
