@@ -163,9 +163,11 @@ def decrypt_credentials():
     decrypted_password_entry.insert(0, password_plaintext)
     decrypted_password_entry.configure(state="readonly")
 
+#Username copy button command
 def copy_decrypted_username():
     pyperclip.copy(decrypted_username_entry.get())
 
+#Password copy button command
 def copy_decrypted_password():
     pyperclip.copy(decrypted_password_entry.get())
 
