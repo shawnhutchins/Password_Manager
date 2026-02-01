@@ -237,6 +237,7 @@ de_toggle_show_master_pass_button = Button(master=decrypt_frame, text="Show Pass
 copy_decrypted_username_button = Button(master=decrypt_frame, text="Copy", command=copy_decrypted_username)
 copy_decrypted_password_button = Button(master=decrypt_frame, text="Copy", command=copy_decrypted_password)
 decrypt_button = Button(master=decrypt_frame, text="Decrypt", command=decrypt_credentials)
+clear_clipboard_button = Button(master=decrypt_frame, text="Clear Clipboard")
 
 #Temp testing/ needs to load on clicking decrypt tab
 data = load_entries()
@@ -297,7 +298,8 @@ decrypted_password_entry.grid(row=3, column=1, sticky="WE")
 de_toggle_show_master_pass_button.grid(row=0, column=2, sticky="WE")
 copy_decrypted_username_button.grid(row=2, column=2, sticky="WE")
 copy_decrypted_password_button.grid(row=3, column=2, sticky="WE")
-decrypt_button.grid(row=4, column=1, columnspan=2, sticky="WE")
+decrypt_button.grid(row=4, column=1, sticky="WE")
+clear_clipboard_button.grid(row=4, column=2, sticky="WE")
 
 #Dropdown
 decrypt_dropdown.grid(row=1, column=1, sticky="WE")
