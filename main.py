@@ -24,7 +24,6 @@ DELIMITER = ","
 #------------------------------ TASKS -----------------------------#
 #Verify inputs for the decrypt tab before allowing decryption. dropdown selection, master password filled
 #When there is an error with validating the inputs for the decrypt tab use a messagebox to tell the user
-#Move logo code above the encrypt tab divider
 #Set column widths or percents for the grid on each frame (tab)
 #Add tool tips like: the generate password button also copies the password to the clipboard
 #Catch when the wrong master password is used for a given row and alert the user
@@ -203,11 +202,12 @@ decrypt_frame = ttk.Frame(master=notebook)
 notebook.add(encrypt_frame, text="Encrypt")
 notebook.add(decrypt_frame, text="Decrypt")
 
-# ---------------------------------- Encrypt Tab ------------------------------- #
 #Logo
 canvas = Canvas(master=window, width=200, height=200)
 logo_image = PhotoImage(file="logo.png")
 canvas.create_image(100, 100, image=logo_image)
+
+# ---------------------------------- Encrypt Tab ------------------------------- #
 
 #Labels
 master_pass_encrypt_label = Label(master=encrypt_frame, text="Master Password: ")
