@@ -27,6 +27,7 @@ DELIMITER = ","
 #Move logo code above the encrypt tab divider
 #Set column widths or percents for the grid on each frame (tab)
 #Add tool tips like: the generate password button also copies the password to the clipboard
+#Catch when the wrong master password is used for a given row and alert the user
 #Fix layout
 #When clicking on decrypt tab load the data.csv to ensure entries are up to date and clear the entries
 #Seperate encrypt and decrypt functions to their own file
@@ -266,10 +267,10 @@ canvas.pack()
 notebook.pack(fill="both", expand=True)
 
 encrypt_frame.grid_rowconfigure(0, weight=1)
-encrypt_frame.grid_columnconfigure(0, weight=1)
+encrypt_frame.grid_columnconfigure(1, weight=1)
 
 decrypt_frame.grid_rowconfigure(0, weight=1)
-decrypt_frame.grid_columnconfigure(0, weight=1)
+decrypt_frame.grid_columnconfigure(1, weight=1)
 
 #Encrypt Tab -------------------- #
 #Labels
