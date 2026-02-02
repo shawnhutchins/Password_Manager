@@ -18,7 +18,6 @@ KDF_ALGORITHM = hashes.SHA256()
 KDF_LENGTH = 32
 KDF_ITERATIONS = 120000
 
-#using pipe with space for testing
 DELIMITER = ","
 
 #------------------------------ TASKS -----------------------------#
