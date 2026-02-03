@@ -265,10 +265,12 @@ canvas.pack()
 #Tabview
 notebook.pack(fill="both", expand=True)
 
-encrypt_frame.grid_rowconfigure(0, weight=1)
+#Setting grid row 5 weight to not add extra padding to the visible rows
+encrypt_frame.grid_rowconfigure(5, weight=1)
 encrypt_frame.grid_columnconfigure(1, weight=1)
 
-decrypt_frame.grid_rowconfigure(0, weight=1)
+#Setting grid row 5 weight to not add extra padding to the visible rows
+decrypt_frame.grid_rowconfigure(5, weight=1)
 decrypt_frame.grid_columnconfigure(1, weight=1)
 
 #Encrypt Tab -------------------- #
@@ -280,8 +282,8 @@ password_label.grid(row=3, column=0, sticky="E")
 
 #Entries
 master_pass_encrypt_entry.grid(row=0, column=1, sticky="WE")
-website_entry.grid(row=1, column=1, columnspan=2, sticky="WE")
-username_entry.grid(row=2, column=1, columnspan=2, sticky="WE")
+website_entry.grid(row=1, column=1, sticky="WE")
+username_entry.grid(row=2, column=1, sticky="WE", pady=3)
 password_entry.grid(row=3, column=1, sticky="WE")
 
 #Buttons
