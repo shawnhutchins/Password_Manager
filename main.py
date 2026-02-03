@@ -263,7 +263,7 @@ decrypt_dropdown.set("Select a website")
 canvas.pack()
 
 #Tabview
-notebook.pack(fill="both", expand=True)
+notebook.pack(fill="x", expand=True)
 
 #Setting grid row 5 weight to not add extra padding to the visible rows
 encrypt_frame.grid_rowconfigure(5, weight=1)
@@ -283,7 +283,7 @@ password_label.grid(row=3, column=0, sticky="E")
 #Entries
 master_pass_encrypt_entry.grid(row=0, column=1, sticky="WE")
 website_entry.grid(row=1, column=1, sticky="WE")
-username_entry.grid(row=2, column=1, sticky="WE", pady=3)
+username_entry.grid(row=2, column=1, sticky="WE", pady=(3, 4))
 password_entry.grid(row=3, column=1, sticky="WE")
 
 #Buttons
