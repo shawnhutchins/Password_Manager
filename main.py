@@ -281,8 +281,8 @@ password_label.grid(row=3, column=0, sticky="E")
 
 #Entries
 master_pass_encrypt_entry.grid(row=0, column=1, sticky="WE")
-website_entry.grid(row=1, column=1, columnspan=2, sticky="WE")
-username_entry.grid(row=2, column=1, columnspan=2, sticky="WE")
+website_entry.grid(row=1, column=1, sticky="WE")
+username_entry.grid(row=2, column=1, sticky="WE")
 password_entry.grid(row=3, column=1, sticky="WE")
 
 #Buttons
