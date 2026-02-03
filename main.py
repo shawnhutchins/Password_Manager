@@ -266,10 +266,12 @@ canvas.pack()
 #Tabview
 notebook.pack(fill="both", expand=True)
 
-encrypt_frame.grid_rowconfigure(0, weight=1)
+#Setting grid row 5 weight to not add extra padding to the visible rows
+encrypt_frame.grid_rowconfigure(5, weight=1)
 encrypt_frame.grid_columnconfigure(1, weight=1)
 
-decrypt_frame.grid_rowconfigure(0, weight=1)
+#Setting grid row 5 weight to not add extra padding to the visible rows
+decrypt_frame.grid_rowconfigure(5, weight=1)
 decrypt_frame.grid_columnconfigure(1, weight=1)
 
 #Encrypt Tab -------------------- #
