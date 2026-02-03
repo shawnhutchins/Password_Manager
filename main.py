@@ -211,7 +211,7 @@ canvas.create_image(100, 100, image=logo_image)
 #Labels
 master_pass_encrypt_label = Label(master=encrypt_frame, text="Master Password: ")
 website_label = Label(master=encrypt_frame, text="Website: ")
-username_label = Label(master=encrypt_frame, text="Email/Username: ")
+username_label = Label(master=encrypt_frame, text="Username: ")
 password_label = Label(master=encrypt_frame, text="Password: ")
 
 #Entries
