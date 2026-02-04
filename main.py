@@ -18,7 +18,11 @@ KDF_ALGORITHM = hashes.SHA256()
 KDF_LENGTH = 32
 KDF_ITERATIONS = 120000
 
+#Temp remove when moving to JSON
 DELIMITER = ","
+
+#Storing loaded data
+data = []
 
 #------------------------------ TASKS -----------------------------#
 #Verify inputs for the decrypt tab before allowing decryption. dropdown selection, master password filled
@@ -129,7 +133,19 @@ def on_tab_selected(event):
     notebook_widget = event.widget
     selected_tab_id = notebook_widget.select()
     tab_text = notebook_widget.tab(selected_tab_id, "text")
-    print(tab_text)
+    if tab_text == "Encrypt":
+        print("Encrypt Tab Selected")
+    elif tab_text == "Decrypt":
+        global data
+        data = load_entries()
+        try:
+            websites = [entry[0] for entry in data]
+            decrypt_dropdown["values"] = websites
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+        print("Decrypt Tab Selected")
+    else:
+        print("Out Of Bounds: Not a valid tab.")
 
 #Toggles showing the master password on both tabs
 def toggle_show_master_pass():
@@ -251,16 +267,8 @@ copy_decrypted_password_button = Button(master=decrypt_frame, text="Copy", comma
 decrypt_button = Button(master=decrypt_frame, text="Decrypt", command=decrypt_credentials)
 de_clear_clipboard_button = Button(master=decrypt_frame, text="Clear Clipboard", command=clear_clipboard)
 
-#Temp testing/ needs to load on clicking decrypt tab
-data = load_entries()
-websites = []
-try:
-    websites = [entry[0] for entry in data]
-    print(websites)
-except Exception as e:
-    print(f"Unexpected error: {e}")
-
-decrypt_dropdown = ttk.Combobox(master=decrypt_frame, values=websites, state="readonly")
+#Dropdown / Values are set when clicking on the Decrypt tab
+decrypt_dropdown = ttk.Combobox(master=decrypt_frame, state="readonly")
 decrypt_dropdown.set("Select a website")
 
 # ---------------------------------- Layout ------------------------------- #
