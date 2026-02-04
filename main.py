@@ -25,6 +25,7 @@ DELIMITER = ","
 data = []
 
 #------------------------------ TASKS -----------------------------#
+#Clear Decrypt tab plain text entries when clicking on the encrypt tab and reset the dropdown
 #Verify inputs for the decrypt tab before allowing decryption. dropdown selection, master password filled
 #When there is an error with validating the inputs for the decrypt tab use a messagebox to tell the user
 #Set column widths or percents for the grid on each frame (tab)
