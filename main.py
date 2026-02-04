@@ -327,6 +327,7 @@ de_clear_clipboard_button.grid(row=4, column=2, sticky="WE")
 #Dropdown
 decrypt_dropdown.grid(row=1, column=1, sticky="WE")
 
+#Event
 notebook.bind("<<NotebookTabChanged>>", on_tab_selected)
 
 window.mainloop()
