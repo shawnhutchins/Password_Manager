@@ -86,6 +86,15 @@ def clear_encrypt_entries():
     username_entry.delete(0, END)
     password_entry.delete(0, END)
 
+def clear_decrypt_entries():
+    decrypted_username_entry.configure(state="normal")
+    decrypted_username_entry.delete(0, END)
+    decrypted_username_entry.configure(state="readonly")
+
+    decrypted_password_entry.configure(state="normal")
+    decrypted_password_entry.delete(0, END)
+    decrypted_password_entry.configure(state="readonly")
+
 #Validates that none of the entries are empty
 def validate_encrypt_input():
     if len(website_entry.get()) > 0 and len(username_entry.get()) > 0 and len(password_entry.get()) > 0:
@@ -134,6 +143,7 @@ def on_tab_selected(event):
     selected_tab_id = notebook_widget.select()
     tab_text = notebook_widget.tab(selected_tab_id, "text")
     if tab_text == "Encrypt":
+        clear_decrypt_entries()
         print("Encrypt Tab Selected")
     elif tab_text == "Decrypt":
         global data
@@ -228,7 +238,6 @@ logo_image = PhotoImage(file="logo.png")
 canvas.create_image(100, 100, image=logo_image)
 
 # ---------------------------------- Encrypt Tab ------------------------------- #
-
 #Labels
 master_pass_encrypt_label = Label(master=encrypt_frame, text="Master Password: ")
 website_label = Label(master=encrypt_frame, text="Website: ")
