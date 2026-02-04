@@ -125,6 +125,12 @@ def load_entries():
     except Exception as e:
         print(f"Unexpected error: {e}")
 
+def on_tab_selected(event):
+    notebook_widget = event.widget
+    selected_tab_id = notebook_widget.select()
+    tab_text = notebook_widget.tab(selected_tab_id, "text")
+    print(tab_text)
+
 #Toggles showing the master password on both tabs
 def toggle_show_master_pass():
     encrypt_show_state = master_pass_encrypt_entry.cget("show")
@@ -320,5 +326,7 @@ print(f"cipher text: {cipher_text}\nunique salt: {u_salt}")
 print(f"cipher text2: {cipher_text2}\nunique salt2: {u_salt2}")
 plain_text = decrypt(cipher_text, master_password_var.get(), u_salt)
 print(f"Output: {plain_text}")
+
+notebook.bind("<<NotebookTabChanged>>", on_tab_selected)
 
 window.mainloop()
