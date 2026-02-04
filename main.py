@@ -26,7 +26,6 @@ DELIMITER = ","
 #Set column widths or percents for the grid on each frame (tab)
 #Add tool tips like: the generate password button also copies the password to the clipboard
 #Catch when the wrong master password is used for a given row and alert the user
-#Fix layout
 #When clicking on decrypt tab load the data.csv to ensure entries are up to date and clear the entries
 #Seperate encrypt and decrypt functions to their own file
 #Refactor to use a class for each tab
