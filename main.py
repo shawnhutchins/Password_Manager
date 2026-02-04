@@ -28,10 +28,8 @@ data = []
 #Clear Decrypt tab plain text entries when clicking on the encrypt tab and reset the dropdown
 #Verify inputs for the decrypt tab before allowing decryption. dropdown selection, master password filled
 #When there is an error with validating the inputs for the decrypt tab use a messagebox to tell the user
-#Set column widths or percents for the grid on each frame (tab)
 #Add tool tips like: the generate password button also copies the password to the clipboard
 #Catch when the wrong master password is used for a given row and alert the user
-#When clicking on decrypt tab load the data.csv to ensure entries are up to date and clear the entries
 #Seperate encrypt and decrypt functions to their own file
 #Refactor to use a class for each tab
 
