@@ -327,14 +327,6 @@ de_clear_clipboard_button.grid(row=4, column=2, sticky="WE")
 #Dropdown
 decrypt_dropdown.grid(row=1, column=1, sticky="WE")
 
-#checking values temp
-cipher_text, u_salt = encrypt("plaintext", master_password_var.get())
-cipher_text2, u_salt2 = encrypt("username+password", master_password_var.get())
-print(f"cipher text: {cipher_text}\nunique salt: {u_salt}")
-print(f"cipher text2: {cipher_text2}\nunique salt2: {u_salt2}")
-plain_text = decrypt(cipher_text, master_password_var.get(), u_salt)
-print(f"Output: {plain_text}")
-
 notebook.bind("<<NotebookTabChanged>>", on_tab_selected)
 
 window.mainloop()
