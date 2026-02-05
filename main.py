@@ -138,6 +138,7 @@ def load_entries():
     except Exception as e:
         print(f"Unexpected error: {e}")
 
+#Runs on tab change
 def on_tab_selected(event):
     notebook_widget = event.widget
     selected_tab_id = notebook_widget.select()
