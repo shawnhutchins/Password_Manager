@@ -26,7 +26,6 @@ data = []
 
 #------------------------------ TASKS -----------------------------#
 #Does data need to be a global?
-#Clear Decrypt tab plain text entries when clicking on the encrypt tab and reset the dropdown
 #Verify inputs for the decrypt tab before allowing decryption. dropdown selection, master password filled
 #When there is an error with validating the inputs for the decrypt tab use a messagebox to tell the user
 #Add tool tips like: the generate password button also copies the password to the clipboard
@@ -86,6 +85,7 @@ def clear_encrypt_entries():
     username_entry.delete(0, END)
     password_entry.delete(0, END)
 
+#Clears plain text username and password entries
 def clear_decrypt_entries():
     decrypted_username_entry.configure(state="normal")
     decrypted_username_entry.delete(0, END)
@@ -205,9 +205,11 @@ def copy_decrypted_username():
 def copy_decrypted_password():
     pyperclip.copy(decrypted_password_entry.get())
 
+#Clears the clipboard by copying an empty string
 def clear_clipboard():
     pyperclip.copy("")
 
+#Confirms closing the app with a massage box
 def confirm_close():
     if messagebox.askokcancel("Exit", "The clipboard will be erased.\nAre you sure you want to quit?"):
         #Clear the clipboard
