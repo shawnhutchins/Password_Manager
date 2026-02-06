@@ -26,8 +26,6 @@ data = []
 
 #------------------------------ TASKS -----------------------------#
 #Does data need to be a global?
-#Verify inputs for the decrypt tab before allowing decryption. dropdown selection, master password filled
-#When there is an error with validating the inputs for the decrypt tab use a messagebox to tell the user
 #Add tool tips like: the generate password button also copies the password to the clipboard
 #Catch when the wrong master password is used for a given row and alert the user
 #Seperate encrypt and decrypt functions to their own file
@@ -99,6 +97,13 @@ def clear_decrypt_entries():
 #Validates that none of the entries are empty
 def validate_encrypt_input():
     if len(website_entry.get()) > 0 and len(username_entry.get()) > 0 and len(password_entry.get()) > 0:
+        return True
+    else:
+        messagebox.showwarning(title="Missing Input", message="Please make sure that all fields are filled out.")
+        return False
+
+def validate_decrypt_input():
+    if len(master_pass_decrypt_entry.get()) > 0 and decrypt_dropdown.get() != "Select a website":
         return True
     else:
         messagebox.showwarning(title="Missing Input", message="Please make sure that all fields are filled out.")
@@ -177,26 +182,27 @@ def toggle_show_master_pass():
 
 #Decrypts the selected row and sets the username/password entries to their respective values
 def decrypt_credentials():
-    credential = decrypt_dropdown.get()
-    row = [row for row in data if row[0] == credential]
+    if validate_decrypt_input():
+        credential = decrypt_dropdown.get()
+        row = [row for row in data if row[0] == credential]
 
-    username_ciphertext = row[0][1].encode("utf-8")
-    username_salt = base64.b64decode(row[0][2].encode("utf-8"))
-    password_ciphertext = row[0][3].encode("utf-8")
-    password_salt = base64.b64decode(row[0][4].encode("utf-8"))
+        username_ciphertext = row[0][1].encode("utf-8")
+        username_salt = base64.b64decode(row[0][2].encode("utf-8"))
+        password_ciphertext = row[0][3].encode("utf-8")
+        password_salt = base64.b64decode(row[0][4].encode("utf-8"))
 
-    username_plaintext = decrypt(username_ciphertext, master_password_var.get(), username_salt)
-    password_plaintext = decrypt(password_ciphertext, master_password_var.get(), password_salt)
+        username_plaintext = decrypt(username_ciphertext, master_password_var.get(), username_salt)
+        password_plaintext = decrypt(password_ciphertext, master_password_var.get(), password_salt)
 
-    decrypted_username_entry.configure(state="normal")
-    decrypted_username_entry.delete(0, "end")
-    decrypted_username_entry.insert(0, username_plaintext)
-    decrypted_username_entry.configure(state="readonly")
+        decrypted_username_entry.configure(state="normal")
+        decrypted_username_entry.delete(0, "end")
+        decrypted_username_entry.insert(0, username_plaintext)
+        decrypted_username_entry.configure(state="readonly")
 
-    decrypted_password_entry.configure(state="normal")
-    decrypted_password_entry.delete(0, "end")
-    decrypted_password_entry.insert(0, password_plaintext)
-    decrypted_password_entry.configure(state="readonly")
+        decrypted_password_entry.configure(state="normal")
+        decrypted_password_entry.delete(0, "end")
+        decrypted_password_entry.insert(0, password_plaintext)
+        decrypted_password_entry.configure(state="readonly")
 
 #Username copy button command
 def copy_decrypted_username():
