@@ -31,6 +31,7 @@ data = []
 #Add tool tips like: the generate password button also copies the password to the clipboard
 #Catch when the wrong master password is used for a given row and alert the user
 #Seperate encrypt and decrypt functions to their own file
+#Move to saving data as JSON
 #Refactor to use a class for each tab
 
 #Salts and Encrypts a string with a password. Returns ciphertext and salt
