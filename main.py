@@ -194,15 +194,19 @@ def decrypt_credentials():
         username_plaintext = decrypt(username_ciphertext, master_password_var.get(), username_salt)
         password_plaintext = decrypt(password_ciphertext, master_password_var.get(), password_salt)
 
-        decrypted_username_entry.configure(state="normal")
-        decrypted_username_entry.delete(0, "end")
-        decrypted_username_entry.insert(0, username_plaintext)
-        decrypted_username_entry.configure(state="readonly")
+        #Checking if username and password were successfully decrypted
+        if username_plaintext and password_plaintext:
+            decrypted_username_entry.configure(state="normal")
+            decrypted_username_entry.delete(0, "end")
+            decrypted_username_entry.insert(0, username_plaintext)
+            decrypted_username_entry.configure(state="readonly")
 
-        decrypted_password_entry.configure(state="normal")
-        decrypted_password_entry.delete(0, "end")
-        decrypted_password_entry.insert(0, password_plaintext)
-        decrypted_password_entry.configure(state="readonly")
+            decrypted_password_entry.configure(state="normal")
+            decrypted_password_entry.delete(0, "end")
+            decrypted_password_entry.insert(0, password_plaintext)
+            decrypted_password_entry.configure(state="readonly")
+        else:
+            messagebox.showerror("Error", "Incorrect Master Password for the chosen credentials.")
 
 #Username copy button command
 def copy_decrypted_username():
