@@ -192,6 +192,7 @@ window.title("Password Manager")
 window.configure(padx=30, pady=20)
 window.protocol("WM_DELETE_WINDOW", confirm_close)
 
+#Master password variable used for both encrypt and decrypt tabs
 master_password_var = StringVar()
 
 #Tabview
