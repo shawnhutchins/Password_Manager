@@ -108,7 +108,6 @@ def on_tab_selected(event):
     tab_text = notebook_widget.tab(selected_tab_id, "text")
     if tab_text == "Encrypt":
         clear_decrypt_entries()
-        print("Encrypt Tab Selected")
     elif tab_text == "Decrypt":
         global data
         data = load_entries()
@@ -117,7 +116,6 @@ def on_tab_selected(event):
             decrypt_dropdown["values"] = websites
         except Exception as e:
             print(f"Unexpected error: {e}")
-        print("Decrypt Tab Selected")
     else:
         print("Out Of Bounds: Not a valid tab.")
 
