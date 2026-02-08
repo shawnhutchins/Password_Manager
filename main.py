@@ -4,7 +4,7 @@ from tkinter import messagebox
 from random import choice, randint, shuffle
 import csv
 import pyperclip
-from pwcrypto import *
+from pwcryptography import *
 
 #Temp remove when moving to JSON
 DELIMITER = ","
@@ -15,7 +15,6 @@ data = []
 #------------------------------ TASKS -----------------------------#
 #Does data need to be a global?
 #Add tool tips like: the generate password button also copies the password to the clipboard
-#Seperate encrypt and decrypt functions to their own file
 #Move to saving data as JSON
 #Refactor to use a class for each tab
 
