@@ -53,7 +53,7 @@ def clear_decrypt_entries():
 
 #Validates that none of the entries are empty
 def validate_encrypt_input():
-    if len(website_entry.get()) > 0 and len(username_entry.get()) > 0 and len(password_entry.get()) > 0:
+    if len(website_entry.get()) > 0 and len(username_entry.get()) > 0 and len(password_entry.get()) > 0 and len(master_pass_encrypt_entry.get()) > 0:
         return True
     else:
         messagebox.showwarning(title="Missing Input", message="Please make sure that all fields are filled out.")
