@@ -13,10 +13,10 @@ DELIMITER = ","
 data = []
 
 #------------------------------ TASKS -----------------------------#
-#Does data need to be a global?
-#Add tool tips like: the generate password button also copies the password to the clipboard
 #Move to saving data as JSON
 #Refactor to use a class for each tab
+#Add tool tips example: the generate password button also copies the password to the clipboard
+#Does data need to be a global?
 
 #Generates a strong password, inserts the password into the password_entry, and copies it to the clipboard
 def generate_password():
