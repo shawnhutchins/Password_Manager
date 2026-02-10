@@ -2,7 +2,6 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
 from random import choice, randint, shuffle
-import csv
 import json
 import pyperclip
 from pwcryptography import *
