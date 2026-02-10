@@ -93,9 +93,15 @@ def save_entry():
             }
         }
 
+        with open("data.json", mode="r") as data_file:
+            #Read in saved json
+            json_data = json.load(data_file)
+            #Update json_data with the new_data
+            json_data.update(new_data)
+
         with open("data.json", mode="w") as data_file:
             #noinspection PyTypeChecker
-            json.dump(new_data, data_file, indent=4)
+            json.dump(json_data, data_file, indent=4)
 
         clear_encrypt_entries()
 
