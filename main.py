@@ -101,11 +101,11 @@ def save_entry():
 #Loads the data.csv and returns the data as a list of lists
 def load_entries():
     try:
-        with open("data.csv", mode="r", newline="") as csv_file:
-            csv_reader = csv.reader(csv_file, delimiter=DELIMITER)
-            return list(csv_reader)
+        with open("data.json", mode="r") as data_file:
+            json_data = json.load(data_file)
+            return json_data
     except FileNotFoundError:
-        print("data.csv not found.")
+        print("data.json not found.")
     except Exception as e:
         print(f"Unexpected error: {e}")
 
