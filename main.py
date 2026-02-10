@@ -59,6 +59,7 @@ def validate_encrypt_input():
         messagebox.showwarning(title="Missing Input", message="Please make sure that all fields are filled out.")
         return False
 
+#Validates that master password is not empty and the dropdown is set to a row
 def validate_decrypt_input():
     if len(master_pass_decrypt_entry.get()) > 0 and decrypt_dropdown.get() != "Select a website":
         return True
