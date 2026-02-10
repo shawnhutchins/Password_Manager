@@ -6,14 +6,12 @@ import json
 import pyperclip
 from pwcryptography import *
 
-#Temp remove when moving to JSON
-DELIMITER = ","
-
 #Storing loaded data
 data = []
 
 #------------------------------ TASKS -----------------------------#
 #In save_entry() handel the case when data.json does not exist
+#Update decrypt_credentials() with the new json format
 #Move to saving data as JSON
 #Refactor to use a class for each tab
 #Add tool tips example: the generate password button also copies the password to the clipboard
