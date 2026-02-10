@@ -3,6 +3,7 @@ from tkinter import ttk
 from tkinter import messagebox
 from random import choice, randint, shuffle
 import csv
+import json
 import pyperclip
 from pwcryptography import *
 
@@ -73,17 +74,28 @@ def save_entry():
         username_ciphertext, username_salt = encrypt(username_entry.get(), master_password_var.get())
         password_ciphertext, password_salt = encrypt(password_entry.get(), master_password_var.get())
 
+        website = website_entry.get()
         username_ciphertext_str = username_ciphertext.decode("utf-8")
         username_salt_str = base64.b64encode(username_salt).decode("utf-8")
         password_ciphertext_str = password_ciphertext.decode("utf-8")
         password_salt_str = base64.b64encode(password_salt).decode("utf-8")
 
-        with open("data.csv", mode="a") as file:
-            file.write(f"{website_entry.get()}{DELIMITER}"
-                       f"{username_ciphertext_str}{DELIMITER}"
-                       f"{username_salt_str}{DELIMITER}"
-                       f"{password_ciphertext_str}{DELIMITER}"
-                       f"{password_salt_str}\n")
+        new_data = {
+            website: {
+                "username": {
+                    "ciphertext": username_ciphertext_str,
+                    "salt": username_salt_str,
+                },
+                "password": {
+                    "ciphertext": password_ciphertext_str,
+                    "salt": password_salt_str,
+                }
+            }
+        }
+
+        with open("data.json", mode="w") as data_file:
+            json.dump(new_data, data_file, indent=4)
+
         clear_encrypt_entries()
 
 #Loads the data.csv and returns the data as a list of lists
