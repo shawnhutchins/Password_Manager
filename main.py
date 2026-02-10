@@ -14,6 +14,7 @@ DELIMITER = ","
 data = []
 
 #------------------------------ TASKS -----------------------------#
+#In save_entry() handel the case when data.json does not exist
 #Move to saving data as JSON
 #Refactor to use a class for each tab
 #Add tool tips example: the generate password button also copies the password to the clipboard
