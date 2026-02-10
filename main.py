@@ -70,26 +70,21 @@ def validate_decrypt_input():
 #Saves the credentials entered to the data.csv file
 def save_entry():
     if validate_encrypt_input():
-        confirmed = messagebox.askokcancel(title=website_entry.get(),
-                                            message=f"Username: {username_entry.get()}\n"
-                                                    f"Password: {password_entry.get()}\n\n"
-                                                    f"Would you like to save?")
-        if confirmed:
-            username_ciphertext, username_salt = encrypt(username_entry.get(), master_password_var.get())
-            password_ciphertext, password_salt = encrypt(password_entry.get(), master_password_var.get())
+        username_ciphertext, username_salt = encrypt(username_entry.get(), master_password_var.get())
+        password_ciphertext, password_salt = encrypt(password_entry.get(), master_password_var.get())
 
-            username_ciphertext_str = username_ciphertext.decode("utf-8")
-            username_salt_str = base64.b64encode(username_salt).decode("utf-8")
-            password_ciphertext_str = password_ciphertext.decode("utf-8")
-            password_salt_str = base64.b64encode(password_salt).decode("utf-8")
+        username_ciphertext_str = username_ciphertext.decode("utf-8")
+        username_salt_str = base64.b64encode(username_salt).decode("utf-8")
+        password_ciphertext_str = password_ciphertext.decode("utf-8")
+        password_salt_str = base64.b64encode(password_salt).decode("utf-8")
 
-            with open("data.csv", mode="a") as file:
-                file.write(f"{website_entry.get()}{DELIMITER}"
-                           f"{username_ciphertext_str}{DELIMITER}"
-                           f"{username_salt_str}{DELIMITER}"
-                           f"{password_ciphertext_str}{DELIMITER}"
-                           f"{password_salt_str}\n")
-            clear_encrypt_entries()
+        with open("data.csv", mode="a") as file:
+            file.write(f"{website_entry.get()}{DELIMITER}"
+                       f"{username_ciphertext_str}{DELIMITER}"
+                       f"{username_salt_str}{DELIMITER}"
+                       f"{password_ciphertext_str}{DELIMITER}"
+                       f"{password_salt_str}\n")
+        clear_encrypt_entries()
 
 #Loads the data.csv and returns the data as a list of lists
 def load_entries():
