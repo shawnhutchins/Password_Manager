@@ -91,17 +91,25 @@ def save_entry():
             }
         }
 
-        with open("data.json", mode="r") as data_file:
-            #Read in saved json
-            json_data = json.load(data_file)
-            #Update json_data with the new_data
+        try:
+            with open("data.json", mode="r") as data_file:
+                #Try to read in the saved json
+                json_data = json.load(data_file)
+        except FileNotFoundError:
+            #If the file does not exist, create the file and write new_data to the file
+            with open("data.json", "w") as data_file:
+                #noinspection PyTypeChecker
+                json.dump(new_data, data_file, indent=4)
+        else:
+            #Else the file exists and update json_data with the new_data
             json_data.update(new_data)
 
-        with open("data.json", mode="w") as data_file:
-            #noinspection PyTypeChecker
-            json.dump(json_data, data_file, indent=4)
-
-        clear_encrypt_entries()
+            #Write the json_date with the update to the file
+            with open("data.json", mode="w") as data_file:
+                #noinspection PyTypeChecker
+                json.dump(json_data, data_file, indent=4)
+        finally:
+            clear_encrypt_entries()
 
 #Loads the data.csv and returns the data as a list of lists
 def load_entries():
