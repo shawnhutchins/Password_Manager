@@ -10,7 +10,6 @@ from pwcryptography import *
 data = []
 
 #------------------------------ TASKS -----------------------------#
-#In save_entry() handel the case when data.json does not exist
 #Update decrypt_credentials() with the new json format
 #Move to saving data as JSON
 #Refactor to use a class for each tab
