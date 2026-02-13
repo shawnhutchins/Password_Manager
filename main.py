@@ -91,8 +91,8 @@ def save_entry():
         }
 
         try:
+            #Try to read in the saved json
             with open("data.json", mode="r") as data_file:
-                #Try to read in the saved json
                 json_data = json.load(data_file)
         except FileNotFoundError:
             #If the file does not exist, create the file and write new_data to the file
