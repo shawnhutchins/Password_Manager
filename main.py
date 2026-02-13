@@ -132,7 +132,7 @@ def on_tab_selected(event):
         global data
         data = load_entries()
         try:
-            websites = [entry[0] for entry in data]
+            websites = list(data.keys())
             decrypt_dropdown["values"] = websites
         except Exception as e:
             print(f"Unexpected error: {e}")
