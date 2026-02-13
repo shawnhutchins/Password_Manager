@@ -7,7 +7,7 @@ import pyperclip
 from pwcryptography import *
 
 #Storing loaded data
-data = []
+data = {}
 
 #------------------------------ TASKS -----------------------------#
 #Update decrypt_credentials() with the new json format
@@ -159,12 +159,11 @@ def toggle_show_master_pass():
 def decrypt_credentials():
     if validate_decrypt_input():
         credential = decrypt_dropdown.get()
-        row = [row for row in data if row[0] == credential]
 
-        username_ciphertext = row[0][1].encode("utf-8")
-        username_salt = base64.b64decode(row[0][2].encode("utf-8"))
-        password_ciphertext = row[0][3].encode("utf-8")
-        password_salt = base64.b64decode(row[0][4].encode("utf-8"))
+        username_ciphertext = data[credential]["username"]["ciphertext"].encode("utf-8")
+        username_salt = base64.b64decode(data[credential]["username"]["salt"].encode("utf-8"))
+        password_ciphertext = data[credential]["password"]["ciphertext"].encode("utf-8")
+        password_salt = base64.b64decode(data[credential]["password"]["salt"].encode("utf-8"))
 
         username_plaintext = decrypt(username_ciphertext, master_password_var.get(), username_salt)
         password_plaintext = decrypt(password_ciphertext, master_password_var.get(), password_salt)
