@@ -10,8 +10,6 @@ from pwcryptography import *
 data = {}
 
 #------------------------------ TASKS -----------------------------#
-#Update decrypt_credentials() with the new json format
-#Move to saving data as JSON
 #Make the decrypt dropdown editable and validate that the entered value is a key in json data
 #Make the decrypt dropdown border red if the entered value is not a key in the json data on submit
 #Cancel the decrypt process if the value in the decrypt dropdown is not a key in the json data
