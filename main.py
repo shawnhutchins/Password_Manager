@@ -133,7 +133,7 @@ def load_entries():
     except Exception as e:
         print(f"Unexpected error: {e}")
 
-#Runs on tab change
+#Runs on tab change, clears entries and loads json data
 def on_tab_selected(event):
     notebook_widget = event.widget
     selected_tab_id = notebook_widget.select()
@@ -150,6 +150,11 @@ def on_tab_selected(event):
             print(f"Unexpected error: {e}")
     else:
         print("Out Of Bounds: Not a valid tab.")
+
+#Selects the text in the dropdown when it gains focus in
+def on_dropdown_focus_in(event):
+    dropdown_widget = event.widget
+    dropdown_widget.selection_range(0, "end")
 
 #Toggles showing the master password on both tabs
 def toggle_show_master_pass():
@@ -342,7 +347,8 @@ de_clear_clipboard_button.grid(row=4, column=2, sticky="WE")
 #Dropdown
 decrypt_dropdown.grid(row=1, column=1, sticky="WE")
 
-#Event
+#Events
 notebook.bind("<<NotebookTabChanged>>", on_tab_selected)
+decrypt_dropdown.bind("<FocusIn>", on_dropdown_focus_in)
 
 window.mainloop()
