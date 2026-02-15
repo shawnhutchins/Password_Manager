@@ -217,6 +217,8 @@ window.protocol("WM_DELETE_WINDOW", confirm_close)
 #Master password variable used for both encrypt and decrypt tabs
 master_password_var = StringVar()
 
+website_status_var = StringVar(value="...")
+
 #Tabview
 notebook = ttk.Notebook(master=window)
 encrypt_frame = ttk.Frame(master=notebook)
@@ -255,7 +257,7 @@ en_clear_clipboard_button = Button(master=encrypt_frame, text="Clear Clipboard",
 #Labels
 master_pass_decrypt_label = Label(master=decrypt_frame, text="Master Password: ")
 website_select_label = Label(master=decrypt_frame, text="Website: ")
-website_value_test_label = Label(master=decrypt_frame, text="...")
+website_status_label = Label(master=decrypt_frame, textvariable=website_status_var)
 decrypted_username_label = Label(master=decrypt_frame, text="Username: ")
 decrypted_password_label = Label(master=decrypt_frame, text="Password: ")
 
@@ -294,7 +296,7 @@ decrypt_frame.grid_columnconfigure(1, weight=1)
 #Labels
 master_pass_encrypt_label.grid(row=0, column=0, sticky="E")
 website_label.grid(row=1, column=0, sticky="E")
-website_value_test_label.grid(row=1, column=2, sticky="W")
+website_status_label.grid(row=1, column=2, sticky="W")
 username_label.grid(row=2, column=0, sticky="E")
 password_label.grid(row=3, column=0, sticky="E")
 
