@@ -70,6 +70,13 @@ def validate_decrypt_input():
         messagebox.showwarning(title="Missing Input", message="Please make sure that all fields are filled out.")
         return False
 
+def validate_website_key():
+    key = decrypt_dropdown.get()
+    if key in data:
+        print("green")
+    else:
+        print("red")
+
 #Saves the credentials entered to the data.csv file
 def save_entry():
     if validate_encrypt_input():
