@@ -70,7 +70,7 @@ def validate_decrypt_input():
         messagebox.showwarning(title="Missing Input", message="Please make sure that all fields are filled out.")
         return False
 
-def validate_website_key():
+def validate_website_key(*args):
     key = decrypt_dropdown.get()
     if key in data:
         print("green")
@@ -224,6 +224,8 @@ window.protocol("WM_DELETE_WINDOW", confirm_close)
 #Master password variable used for both encrypt and decrypt tabs
 master_password_var = StringVar()
 
+decrypt_dropdown_var = StringVar(value="Select a website")
+decrypt_dropdown_var.trace_add("write", validate_website_key)
 website_status_var = StringVar(value="...")
 
 #Tabview
@@ -281,8 +283,7 @@ decrypt_button = Button(master=decrypt_frame, text="Decrypt", command=decrypt_cr
 de_clear_clipboard_button = Button(master=decrypt_frame, text="Clear Clipboard", command=clear_clipboard)
 
 #Dropdown / Values are set when clicking on the Decrypt tab
-decrypt_dropdown = ttk.Combobox(master=decrypt_frame, state="readonly")
-decrypt_dropdown.set("Select a website")
+decrypt_dropdown = ttk.Combobox(master=decrypt_frame, textvariable=decrypt_dropdown_var)
 
 # ---------------------------------- Layout ------------------------------- #
 #Logo
