@@ -10,6 +10,10 @@ from pwcryptography import *
 data = {}
 
 #------------------------------ TASKS -----------------------------#
+#Write a function to check if an input is a valid key in the loaded json data
+#Write a function to bind to combobox on update that updates the website status label
+#Make the website status label show Found or Not Found when checking entered value into the dropdown
+#Make the website status label text change colors based on the status
 #Make the decrypt dropdown editable and validate that the entered value is a key in json data
 #Make the decrypt dropdown border red if the entered value is not a key in the json data on submit
 #Cancel the decrypt process if the value in the decrypt dropdown is not a key in the json data
