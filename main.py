@@ -12,6 +12,8 @@ data = {}
 #------------------------------ TASKS -----------------------------#
 #Handel errors when clicking on the decrypt tab when there is no data.json file
 #Cancel the decrypt process if the value in the decrypt dropdown is not a key in the json data
+#Find a good place to do an initial load of the json into the global data variable
+#Verify that comments are still correct after moving to using json data etc.
 #Consider adding autocomplete to the decrypt dropdown input
 #Refactor to use a class for each tab
 #Add tool tips example: the generate password button also copies the password to the clipboard
@@ -120,7 +122,7 @@ def save_entry():
         finally:
             clear_encrypt_entries()
 
-#Loads the data.csv and returns the data as a list of lists
+#Loads the data.json and returns the data as json
 def load_entries():
     try:
         with open("data.json", mode="r") as data_file:
@@ -131,7 +133,7 @@ def load_entries():
     except Exception as e:
         print(f"Unexpected error: {e}")
 
-#Runs on tab change, clears entries and loads json data
+#Runs on tab change, clears entries and loads json data into the global data variable
 def on_tab_selected(event):
     notebook_widget = event.widget
     selected_tab_id = notebook_widget.select()
