@@ -17,6 +17,7 @@ data = {}
 #Make the decrypt dropdown editable and validate that the entered value is a key in json data
 #Make the decrypt dropdown border red if the entered value is not a key in the json data on submit
 #Cancel the decrypt process if the value in the decrypt dropdown is not a key in the json data
+#Consider adding autocomplete to the decrypt dropdown input
 #Refactor to use a class for each tab
 #Add tool tips example: the generate password button also copies the password to the clipboard
 #Does data need to be a global?
