@@ -73,9 +73,11 @@ def validate_decrypt_input():
 def validate_website_key(*args):
     key = decrypt_dropdown.get()
     if key in data:
-        print("green")
+        website_status_label.config(fg="green")
+        website_status_var.set("Found")
     else:
-        print("red")
+        website_status_label.config(fg="red")
+        website_status_var.set("Not Found")
 
 #Saves the credentials entered to the data.csv file
 def save_entry():
