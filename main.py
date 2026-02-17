@@ -68,6 +68,7 @@ def validate_decrypt_input():
         messagebox.showwarning(title="Missing Input", message="Please make sure that all fields are filled out.")
         return False
 
+#Validates that the value entered into the decrypt website dropdown is a key in the loaded json data
 def validate_website_key(*args):
     key = decrypt_dropdown.get()
     if key in data:
