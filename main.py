@@ -11,7 +11,6 @@ data = {}
 
 #------------------------------ TASKS -----------------------------#
 #Handel errors when clicking on the decrypt tab when there is no data.json file
-#Cancel the decrypt process if the value in the decrypt dropdown is not a key in the json data
 #Find a good place to do an initial load of the json into the global data variable
 #Verify that comments are still correct after moving to using json data etc.
 #Consider adding autocomplete to the decrypt dropdown input
