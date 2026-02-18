@@ -65,6 +65,7 @@ def validate_decrypt_input():
         if website_status_var.get() == "Found":
             return True
         else:
+            clear_decrypt_entries()
             messagebox.showwarning(title="Input not found", message="The entered website was not found.")
             return False
     else:
