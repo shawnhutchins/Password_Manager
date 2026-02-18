@@ -147,11 +147,12 @@ def on_tab_selected(event):
     elif tab_text == "Decrypt":
         global data
         data = load_entries()
-        try:
+        if not data:
+            notebook.select(0)
+            messagebox.showwarning(title="Missing data", message="There are no credentials to decrypt, please add an entry.")
+        else:
             websites = list(data.keys())
             decrypt_dropdown["values"] = websites
-        except Exception as e:
-            print(f"Unexpected error: {e}")
     else:
         print("Out Of Bounds: Not a valid tab.")
 
