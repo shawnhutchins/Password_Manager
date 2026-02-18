@@ -10,6 +10,7 @@ from pwcryptography import *
 data = {}
 
 #------------------------------ TASKS -----------------------------#
+#Set key strings to lowercase when checking if they are in the json data and when saving to file
 #Handel errors when clicking on the decrypt tab when there is no data.json file
 #Find a good place to do an initial load of the json into the global data variable
 #Verify that comments are still correct after moving to using json data etc.
