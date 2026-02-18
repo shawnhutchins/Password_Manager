@@ -63,13 +63,17 @@ def validate_encrypt_input():
 #Validates that master password is not empty and the dropdown is set to a row
 def validate_decrypt_input():
     if len(master_pass_decrypt_entry.get()) > 0 and decrypt_dropdown.get() != "Select a website":
-        return True
+        if website_status_var.get() == "Found":
+            return True
+        else:
+            messagebox.showwarning(title="Input not found", message="The entered website was not found.")
+            return False
     else:
         messagebox.showwarning(title="Missing Input", message="Please make sure that all fields are filled out.")
         return False
 
 #Validates that the value entered into the decrypt website dropdown is a key in the loaded json data
-def validate_website_key(*args):
+def update_website_key_status(*args):
     key = decrypt_dropdown.get()
     if key in data:
         website_status_label.config(fg="green")
@@ -231,7 +235,7 @@ window.protocol("WM_DELETE_WINDOW", confirm_close)
 master_password_var = StringVar()
 
 decrypt_dropdown_var = StringVar(value="Select a website")
-decrypt_dropdown_var.trace_add("write", validate_website_key)
+decrypt_dropdown_var.trace_add("write", update_website_key_status)
 website_status_var = StringVar(value="...")
 
 #Tabview
