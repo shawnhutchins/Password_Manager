@@ -75,7 +75,7 @@ def validate_decrypt_input():
 
 #Validates that the value entered into the decrypt website dropdown is a key in the loaded json data
 def update_website_key_status(*args):
-    key = decrypt_dropdown.get()
+    key = decrypt_dropdown.get().lower()
     if key in data:
         website_status_label.config(fg="green")
         website_status_var.set("Found")
@@ -89,7 +89,7 @@ def save_entry():
         username_ciphertext, username_salt = encrypt(username_entry.get(), master_password_var.get())
         password_ciphertext, password_salt = encrypt(password_entry.get(), master_password_var.get())
 
-        website = website_entry.get()
+        website = website_entry.get().lower()
         username_ciphertext_str = username_ciphertext.decode("utf-8")
         username_salt_str = base64.b64encode(username_salt).decode("utf-8")
         password_ciphertext_str = password_ciphertext.decode("utf-8")
@@ -182,7 +182,7 @@ def toggle_show_master_pass():
 #Decrypts the selected row and sets the username/password entries to their respective values
 def decrypt_credentials():
     if validate_decrypt_input():
-        credential = decrypt_dropdown.get()
+        credential = decrypt_dropdown.get().lower()
 
         username_ciphertext = data[credential]["username"]["ciphertext"].encode("utf-8")
         username_salt = base64.b64decode(data[credential]["username"]["salt"].encode("utf-8"))
