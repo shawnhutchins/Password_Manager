@@ -233,6 +233,7 @@ window.protocol("WM_DELETE_WINDOW", confirm_close)
 #Master password variable used for both encrypt and decrypt tabs
 master_password_var = StringVar()
 
+#Using tk variables to update the website_status label during manual input
 decrypt_dropdown_var = StringVar(value="Select a website")
 decrypt_dropdown_var.trace_add("write", update_website_key_status)
 website_status_var = StringVar(value="...")
