@@ -10,7 +10,6 @@ from pwcryptography import *
 data = {}
 
 #------------------------------ TASKS -----------------------------#
-#Verify that comments are still correct after moving to using json data etc.
 #Consider adding autocomplete to the decrypt dropdown input
 #Refactor to use a class for each tab
 #Add tool tips example: the generate password button also copies the password to the clipboard
