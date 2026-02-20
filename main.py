@@ -57,7 +57,7 @@ def validate_encrypt_input():
         messagebox.showwarning(title="Missing Input", message="Please make sure that all fields are filled out.")
         return False
 
-#Validates that master password is not empty and the dropdown is set to a row
+#Validates that master password is not empty and the dropdown is set to an entry
 def validate_decrypt_input():
     if len(master_pass_decrypt_entry.get()) > 0 and decrypt_dropdown.get() != "Select a website":
         if website_status_var.get() == "Found":
@@ -70,7 +70,7 @@ def validate_decrypt_input():
         messagebox.showwarning(title="Missing Input", message="Please make sure that all fields are filled out.")
         return False
 
-#Validates that the value entered into the decrypt website dropdown is a key in the loaded json data
+#Updates the website status label if the entered input is a key in the json data or not
 def update_website_key_status(*args):
     key = decrypt_dropdown.get().lower()
     if key in data:
@@ -80,7 +80,7 @@ def update_website_key_status(*args):
         website_status_label.config(fg="red")
         website_status_var.set("Not Found")
 
-#Saves the credentials entered to the data.csv file
+#Saves the encrypted credentials to the data.json file
 def save_entry():
     if validate_encrypt_input():
         username_ciphertext, username_salt = encrypt(username_entry.get(), master_password_var.get())
@@ -176,7 +176,7 @@ def toggle_show_master_pass():
         en_toggle_show_master_pass_button.configure(text="Show Password")
         de_toggle_show_master_pass_button.configure(text="Show Password")
 
-#Decrypts the selected row and sets the username/password entries to their respective values
+#Decrypts the selected credential and sets the username/password entries to their respective values
 def decrypt_credentials():
     if validate_decrypt_input():
         credential = decrypt_dropdown.get().lower()
